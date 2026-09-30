@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All About Eyes by Carrie – Lash Artist</title>
+<meta name="description" content="Luxuriöse Wimpernkunst für deinen perfekten Blick – Wimpernverlängerung, Lash Lifting und Brow Styling by Carrie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ============ Farben & Grundwerte ============ */
+  :root{
+    --bg:#fbf5f1;
+    --bg-soft:#f6ebe5;
+    --card:#fffaf7;
+    --rose:#c08e7c;
+    --rose-dark:#a8715f;
+    --rose-light:#e9cfc4;
+    --gold:#c49a78;
+    --text:#4a3530;
+    --text-soft:#7a625b;
+    --line:#e3cbbf;
+    --serif:'Cormorant Garamond', Georgia, serif;
+    --script:'Great Vibes', cursive;
+    --sans:'Montserrat', Arial, sans-serif;
+    --shadow:0 8px 30px rgba(150,100,85,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;overflow-x:hidden}
+  body{
+    font-family:var(--serif);
+    color:var(--text);
+    background:var(--bg);
+    font-size:18px;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .container{width:min(1200px,100% - 32px);margin-inline:auto}
+
+  /* ============ Wiederverwendbare Bausteine ============ */
+  .label{
+    font-family:var(--sans);
+    font-size:11px;
+    letter-spacing:.3em;
+    text-transform:uppercase;
+  }
+  .script{font-family:var(--script);font-weight:400;color:var(--rose-dark)}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--sans);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    padding:14px 26px;border-radius:4px;cursor:pointer;
+    transition:transform .2s, box-shadow .2s, background .2s;
+    border:1px solid var(--rose);
+  }
+  .btn svg{width:16px;height:16px}
+  .btn-primary{
+    background:linear-gradient(135deg,#cf9d8a,#b27b69);
+    color:#fff;border-color:transparent;
+    box-shadow:0 6px 18px rgba(178,123,105,.35);
+  }
+  .btn-outline{background:rgba(255,255,255,.55);color:var(--text)}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(178,123,105,.35)}
+  .btn-small{padding:8px 18px;font-size:10px;width:100%;justify-content:center}
+
+  .section-title{text-align:center;margin-bottom:34px}
+  .section-title h2{
+    font-weight:500;font-size:clamp(24px,3vw,32px);
+    letter-spacing:.25em;text-transform:uppercase;
+    display:flex;align-items:center;justify-content:center;gap:24px;
+  }
+  .section-title h2::before,.section-title h2::after{
+    content:"";height:1px;width:min(160px,15vw);background:var(--line);
+  }
+  .section-title p{color:var(--text-soft);margin-top:6px;font-size:10px}
+
+  .icon{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.3}
+
+  /* ============ Header ============ */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,245,241,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:10px 0}
+  .logo{display:flex;align-items:center;gap:14px}
+  .logo-mark{font-family:var(--script);font-size:42px;color:var(--rose-dark);line-height:1}
+  .logo-text strong{display:block;font-weight:500;font-size:19px;line-height:1.1}
+  .logo-text span{font-size:9px;color:var(--text-soft)}
+  .nav-links{display:flex;gap:30px;list-style:none;font-size:15px}
+  .nav-links a{padding:4px 0;border-bottom:1px solid transparent;transition:border-color .2s}
+  .nav-links a:hover,.nav-links a.active{border-color:var(--rose)}
+  .nav-right{display:flex;align-items:center;gap:14px}
+  .nav-right .btn{padding:10px 18px;font-family:var(--serif);font-size:15px;letter-spacing:0;text-transform:none}
+  .social a{display:inline-flex;color:var(--text);transition:color .2s}
+  .social a:hover{color:var(--rose-dark)}
+  .menu-toggle{display:none;background:none;border:0;cursor:pointer;color:var(--text)}
+
+  /* ============ Hero ============ */
+  .hero{
+    position:relative;
+    background:linear-gradient(90deg,transparent 40%,var(--bg) 58%), var(--bg);
+    overflow:hidden;
+  }
+  .hero-img{
+    position:absolute;inset:0 auto 0 0;width:52%;
+    background:url(img/hero.jpg) center/cover no-repeat;
+    -webkit-mask-image:linear-gradient(90deg,#000 70%,transparent);
+            mask-image:linear-gradient(90deg,#000 70%,transparent);
+  }
+  .hero-deko{
+    position:absolute;right:0;top:0;width:190px;height:240px;
+    background:url(img/deko.jpg) center/cover;
+    -webkit-mask-image:linear-gradient(225deg,#000 40%,transparent 80%);
+            mask-image:linear-gradient(225deg,#000 40%,transparent 80%);
+    opacity:.9;
+  }
+  .hero-inner{position:relative;display:grid;grid-template-columns:1fr 1.05fr;min-height:560px}
+  .hero-words{
+    align-self:end;margin-bottom:40px;
+    list-style:none;color:var(--text);
+    line-height:2.1;font-size:12px;
+    text-shadow:0 0 12px rgba(255,255,255,.8);
+  }
+  .hero-words::after{content:"";display:block;width:50px;height:1px;background:var(--text);margin-top:10px}
+  .hero-content{text-align:center;padding:50px 0 40px;position:relative}
+  @media (min-width:901px){.hero-content{padding-right:110px}}
+  .hero-content .script{font-size:clamp(52px,7vw,84px);line-height:.9}
+  .hero-content h1{
+    font-weight:500;line-height:1.05;
+    font-size:clamp(40px,5.6vw,68px);letter-spacing:.02em;
+    background:linear-gradient(180deg,#b58370,#7d4f41);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero-content h1 small{display:block;font-size:.58em;letter-spacing:0;color:var(--text);-webkit-text-fill-color:var(--text)}
+  .hero-content .label{margin:18px 0 26px;line-height:2;font-size:12px}
+  .hero-buttons{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+  .values{display:flex;justify-content:center;gap:clamp(20px,4vw,50px);margin-top:36px;color:var(--rose-dark)}
+  .values div{display:flex;flex-direction:column;align-items:center;gap:8px}
+  .values .icon{width:30px;height:30px}
+  .values .label{font-size:9px;color:var(--text-soft);margin:0}
+  .hero-signature{
+    position:absolute;right:24px;bottom:24px;
+    font-size:38px;line-height:1;transform:rotate(-12deg);text-align:center;
+  }
+
+  /* ============ Leistungen ============ */
+  .services{padding:30px 0 50px;background:var(--bg-soft)}
+  .service-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+  .service-card{
+    background:var(--card);border:1px solid var(--line);border-radius:6px;
+    overflow:hidden;display:flex;flex-direction:column;
+    transition:transform .25s, box-shadow .25s;
+  }
+  .service-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .service-card img{aspect-ratio:16/9;object-fit:cover;width:100%}
+  .service-body{padding:12px 12px 14px;display:flex;flex-direction:column;flex:1}
+  .service-body h3{font-weight:500;font-size:19px}
+  .service-body p{font-size:14px;color:var(--text-soft);line-height:1.35;flex:1}
+  .price{font-size:24px;margin:6px 0 10px}
+
+  /* ============ Über mich & Warum ============ */
+  .about-why{display:grid;grid-template-columns:1.15fr 1fr}
+  .about{
+    display:grid;grid-template-columns:1fr 1.1fr;align-items:center;
+    background:var(--bg);position:relative;overflow:hidden;
+  }
+  .about-text{padding:40px 10px 40px 28px;position:relative;z-index:2}
+  .about-text h2{font-weight:500;font-size:30px;line-height:1}
+  .about-text .script{font-size:54px;line-height:1;margin-bottom:18px;display:block}
+  .about-text p{font-size:16px;margin-bottom:22px}
+  .about-img{position:relative;height:100%}
+  .about-img img{width:100%;height:100%;object-fit:cover;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 25%);
+            mask-image:linear-gradient(90deg,transparent,#000 25%)}
+  .why{background:var(--card);padding:36px 30px;position:relative;border-left:1px solid var(--line)}
+  .why h2{font-weight:500;font-size:30px;margin-bottom:18px}
+  .why-item{display:flex;gap:18px;align-items:center;margin-bottom:16px}
+  .why-icon{
+    flex:none;width:46px;height:46px;border-radius:50%;
+    border:1px solid var(--rose);display:grid;place-items:center;color:var(--rose-dark);
+  }
+  .why-item h3{font-weight:500;font-size:18px;line-height:1.2}
+  .why-item p{font-size:14px;color:var(--text-soft);line-height:1.3}
+  .why-quote{
+    position:absolute;right:18px;top:50%;transform:translateY(-50%) rotate(-10deg);
+    font-size:30px;line-height:1.15;text-align:center;max-width:170px;
+  }
+  .why-list{max-width:calc(100% - 170px)}
+
+  /* ============ Galerie ============ */
+  .gallery{padding:30px 0 20px;background:var(--bg-soft)}
+  .gallery-head{position:relative}
+  .gallery-nav{
+    position:absolute;right:0;top:4px;display:flex;align-items:center;gap:14px;
+    color:var(--text-soft);font-size:10px;
+  }
+  .gallery-nav button{background:none;border:0;cursor:pointer;color:inherit;font:inherit;letter-spacing:inherit;text-transform:inherit}
+  .gallery-nav button:hover{color:var(--rose-dark)}
+  .gallery-track{
+    display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 60px)/7);gap:10px;
+    overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;scroll-behavior:smooth;
+  }
+  .gallery-track::-webkit-scrollbar{display:none}
+  .gallery-track > *{scroll-snap-align:start;border-radius:6px;overflow:hidden;aspect-ratio:4/3}
+  .gallery-track img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+  .gallery-track a:hover img{transform:scale(1.06)}
+  .gallery-more{
+    background:var(--card);border:1px solid var(--line);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    font-style:italic;letter-spacing:.15em;text-align:center;color:var(--text-soft);font-size:15px;
+  }
+
+  /* ============ Kundenstimmen ============ */
+  .reviews{padding:10px 0 40px;background:var(--bg-soft)}
+  .reviews .section-title h2::before,.reviews .section-title h2::after{display:none}
+  .reviews-wrap{display:flex;align-items:center;gap:14px}
+  .arrow{
+    flex:none;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);
+    background:var(--card);cursor:pointer;display:grid;place-items:center;color:var(--text);
+  }
+  .arrow:hover{border-color:var(--rose)}
+  .reviews-viewport{overflow:hidden;flex:1}
+  .reviews-track{display:flex;transition:transform .5s ease}
+  .review{flex:0 0 calc(100%/3);padding:0 8px}
+  .review-card{
+    background:var(--card);border:1px solid var(--line);border-radius:6px;
+    padding:16px;display:flex;gap:18px;align-items:center;height:100%;
+  }
+  .review-card img{width:72px;height:72px;border-radius:50%;object-fit:cover;flex:none}
+  .stars{color:var(--gold);letter-spacing:3px;font-size:14px}
+  .review-card p{font-family:var(--sans);font-size:11px;line-height:1.55;color:var(--text-soft)}
+  .review-card strong{display:block;font-family:var(--serif);font-size:14px;margin-top:6px;color:var(--text)}
+  .dots{display:flex;justify-content:center;gap:8px;margin-top:18px}
+  .dots button{width:9px;height:9px;border-radius:50%;border:1px solid var(--rose);background:none;cursor:pointer}
+  .dots button.active{background:var(--rose)}
+
+  /* ============ CTA / Kontakt ============ */
+  .cta{background:var(--bg);border-top:1px solid var(--line);padding:30px 0}
+  .cta-inner{display:grid;grid-template-columns:auto auto 1fr auto;align-items:center;gap:40px}
+  .cta-title{font-family:var(--script);font-size:30px;line-height:1.1;color:var(--text)}
+  .contact-list{list-style:none;border-left:1px solid var(--line);border-right:1px solid var(--line);padding:0 40px}
+  .contact-list li{display:flex;align-items:center;gap:12px;font-size:15px;margin:4px 0}
+  .contact-list .dot{
+    width:24px;height:24px;border-radius:50%;background:var(--rose);color:#fff;
+    display:grid;place-items:center;flex:none;
+  }
+  .contact-list .dot svg{width:13px;height:13px}
+  .contact-list a:hover{color:var(--rose-dark)}
+  .cta-logo{text-align:center}
+  .cta-logo .logo-mark{font-size:60px}
+
+  /* ============ Footer ============ */
+  footer{background:var(--bg-soft);border-top:1px solid var(--line);padding:16px 0;font-size:13px}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  .footer-links{display:flex;gap:24px;list-style:none}
+  .footer-links a:hover{color:var(--rose-dark)}
+  .footer-claim{font-size:9px;color:var(--text-soft)}
+  .footer-claim span{color:var(--rose);margin:0 10px}
+
+  /* ============ Einblend-Animation ============ */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s, transform .8s}
+  .reveal.visible{opacity:1;transform:none}
+
+  /* ============ Responsive ============ */
+  @media (max-width:1100px){
+    .service-grid{grid-template-columns:repeat(3,1fr)}
+    .about-why{grid-template-columns:1fr}
+    .gallery-track{grid-auto-columns:calc((100% - 30px)/4)}
+    .cta-inner{grid-template-columns:1fr 1fr;gap:24px}
+    .contact-list{border:0;padding:0}
+  }
+  @media (max-width:900px){
+    .nav-links{
+      display:none;position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line);
+    }
+    .nav-links.open{display:flex}
+    .nav-links a{display:block;padding:14px 24px;border:0}
+    .menu-toggle{display:inline-flex}
+    .nav-right .btn{display:none}
+    .hero-inner{grid-template-columns:1fr;min-height:auto}
+    .hero-img{position:relative;width:100%;height:320px;
+      -webkit-mask-image:linear-gradient(180deg,#000 70%,transparent);
+              mask-image:linear-gradient(180deg,#000 70%,transparent)}
+    .hero{background:var(--bg)}
+    .hero-words,.hero-signature,.hero-deko{display:none}
+    .hero-content{padding-top:10px}
+    .why-quote{display:none}
+    .why-list{max-width:none}
+  }
+  @media (max-width:640px){
+    body{font-size:17px}
+    .service-grid{grid-template-columns:repeat(2,1fr)}
+    .about{grid-template-columns:1fr}
+    .about-img{height:320px;order:-1}
+    .about-img img{-webkit-mask-image:linear-gradient(180deg,#000 75%,transparent);mask-image:linear-gradient(180deg,#000 75%,transparent)}
+    .about-text{padding:10px 16px 30px}
+    .why{padding:30px 16px}
+    .gallery-track{grid-auto-columns:calc((100% - 10px)/2)}
+    .gallery-nav{position:static;justify-content:center;margin-top:-20px;margin-bottom:14px}
+    .review{flex-basis:100%}
+    .review-card{flex-direction:column;text-align:center}
+    .cta-inner{grid-template-columns:1fr;text-align:center}
+    .contact-list li{justify-content:center}
+    .footer-inner{flex-direction:column;text-align:center}
+    .footer-links{flex-wrap:wrap;justify-content:center;gap:14px}
+    .logo-text strong{font-size:16px}
+    .section-title h2{letter-spacing:.15em;gap:12px}
+    .section-title h2::before,.section-title h2::after{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- SVG-Icons einmal definieren, dann per <use> wiederverwenden -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M8 14h2M14 14h2M8 17h2"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-diamond" viewBox="0 0 24 24"><path d="M6 4h12l4 5-10 12L2 9z"/><path d="M2 9h20M9 4l3 17M15 4l-3 17M6 4l3 5 3-5 3 5 3-5"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11z"/></symbol>
+    <symbol id="i-lotus" viewBox="0 0 24 24"><path d="M12 19c-3-2-4-5-4-8s2-5 4-7c2 2 4 4 4 7s-1 6-4 8z"/><path d="M12 19c-4 0-8-2-9-6 2-1 5-1 6 0M12 19c4 0 8-2 9-6-2-1-5-1-6 0"/></symbol>
+    <symbol id="i-inf" viewBox="0 0 24 24"><path d="M12 12c-2-3-4-4-6-4a4 4 0 0 0 0 8c2 0 4-1 6-4zm0 0c2 3 4 4 6 4a4 4 0 0 0 0-8c-2 0-4 1-6 4z"/></symbol>
+    <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="6" r="2.5"/><circle cx="15.5" cy="7" r="2"/><path d="M5 20l1.5-8a2.5 2.5 0 0 1 5 0L13 20M13 20l1-7a1.8 1.8 0 0 1 3.5 0L19 20"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+    <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 20l1.3-3.8A8 8 0 1 1 8 19z"/><path d="M9 9c0 3 3 6 6 6l1-1.5-2-1-1 1c-1-.5-2-1.5-2.5-2.5l1-1-1-2z"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+  </defs>
+</svg>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <nav class="container nav">
+    <a href="#start" class="logo" aria-label="Zur Startseite">
+      <span class="logo-mark">AC</span>
+      <span class="logo-text"><strong>All About Eyes by Carrie</strong><span class="label">Lash Artist</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#start" class="active">Start</a></li>
+      <li><a href="#leistungen">Leistungen</a></li>
+      <li><a href="#leistungen">Preise</a></li>
+      <li><a href="#galerie">Galerie</a></li>
+      <li><a href="#ueber-mich">Über mich</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#kontakt" class="btn btn-primary"><svg class="icon"><use href="#i-cal"/></svg>Termin anfragen</a>
+      <span class="social">
+        <a href="https://instagram.com/all_about_eyes_by_carrie" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon"><use href="#i-insta"/></svg></a>
+        <a href="https://wa.me/4915153319572" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="icon"><use href="#i-chat"/></svg></a>
+      </span>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen" aria-expanded="false"><svg class="icon" style="width:28px;height:28px"><use href="#i-menu"/></svg></button>
+    </div>
+  </nav>
+</header>
+
+<main>
+<!-- ================= HERO ================= -->
+<section class="hero" id="start">
+  <div class="hero-img" role="img" aria-label="Auge mit Wimpernverlängerung"></div>
+  <div class="hero-deko" aria-hidden="true"></div>
+  <div class="container hero-inner">
+    <ul class="hero-words label">
+      <li>Beauty</li><li>Confidence</li><li>Uniqueness</li><li>Always you</li>
+    </ul>
+    <div class="hero-content">
+      <div class="script">Luxuriöse</div>
+      <h1>WIMPERNKUNST<small>für deinen perfekten Blick</small></h1>
+      <p class="label">Mehr als Wimpern – ein Gefühl<br>von Schönheit, jeden Tag.</p>
+      <div class="hero-buttons">
+        <a href="#kontakt" class="btn btn-primary"><svg class="icon"><use href="#i-cal"/></svg>Jetzt Termin sichern<svg class="icon"><use href="#i-arrow"/></svg></a>
+        <a href="#leistungen" class="btn btn-outline">Preise ansehen<svg class="icon"><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="values">
+        <div><svg class="icon"><use href="#i-diamond"/></svg><span class="label">Beauty</span></div>
+        <div><svg class="icon"><use href="#i-heart"/></svg><span class="label">Confidence</span></div>
+        <div><svg class="icon"><use href="#i-lotus"/></svg><span class="label">Uniqueness</span></div>
+        <div><svg class="icon"><use href="#i-inf"/></svg><span class="label">Always you</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-signature script" aria-hidden="true">More<br>than<br>Lashes ♡</div>
+</section>
+
+<!-- ================= LEISTUNGEN & PREISE ================= -->
+<section class="services" id="leistungen">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>Leistungen &amp; Preise</h2>
+      <p class="label">Perfekter Look. Individuell auf dich abgestimmt.</p>
+    </div>
+    <div class="service-grid">
+      <article class="service-card reveal">
+        <img src="img/s1.jpg" alt="Classic Wimpern" loading="lazy">
+        <div class="service-body"><h3>Classic Neuset</h3><p>Natürliche Eleganz für einen ausdrucksstarken Blick.</p><div class="price">89 €</div><a href="#kontakt" class="btn btn-outline btn-small">Details<svg class="icon"><use href="#i-arrow"/></svg></a></div>
+      </article>
+      <article class="service-card reveal">
+        <img src="img/s2.jpg" alt="Volumen Wimpern" loading="lazy">
+        <div class="service-body"><h3>Volumen Neuset</h3><p>Mehr Fülle für einen dramatischen Look.</p><div class="price">109 €</div><a href="#kontakt" class="btn btn-outline btn-small">Details<svg class="icon"><use href="#i-arrow"/></svg></a></div>
+      </article>
+      <article class="service-card reveal">
+        <img src="img/s3.jpg" alt="Auffüllen nach 2 Wochen" loading="lazy">
+        <div class="service-body"><h3>Auffüllen 2 Wochen</h3><p>Frische Wimpern für anhaltende Schönheit.</p><div class="price">49 €</div><a href="#kontakt" class="btn btn-outline btn-small">Details<svg class="icon"><use href="#i-arrow"/></svg></a></div>
+      </article>
+      <article class="service-card reveal">
+        <img src="img/s4.jpg" alt="Auffüllen nach 3 Wochen" loading="lazy">
+        <div class="service-body"><h3>Auffüllen 3 Wochen</h3><p>Perfekte Form auch nach Wochen.</p><div class="price">59 €</div><a href="#kontakt" class="btn btn-outline btn-small">Details<svg class="icon"><use href="#i-arrow"/></svg></a></div>
+      </article>
+      <article class="service-card reveal">
+        <img src="img/s5.jpg" alt="Lash Lifting" loading="lazy">
+        <div class="service-body"><h3>Lash Lifting</h3><p>Natürlich schöne Wimpern mit maximalem Effekt.</p><div class="price">55 €</div><a href="#kontakt" class="btn btn-outline btn-small">Details<svg class="icon"><use href="#i-arrow"/></svg></a></div>
+      </article>
+      <article class="service-card reveal">
+        <img src="img/s6.jpg" alt="Brow Styling" loading="lazy">
+        <div class="service-body"><h3>Brow Styling</h3><p>Perfekt geformte Augenbrauen für einen harmonischen Look.</p><div class="price">35 €</div><a href="#kontakt" class="btn btn-outline btn-small">Details<svg class="icon"><use href="#i-arrow"/></svg></a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ÜBER MICH + WARUM ================= -->
+<section class="about-why" id="ueber-mich">
+  <div class="about">
+    <div class="about-text reveal">
+      <h2>Über mich</h2>
+      <span class="script">Carrie ♡</span>
+      <p>Schönheit ist mehr als ein Look – sie ist ein Gefühl. Mit viel Liebe zum Detail, Fachwissen und hochwertigen Produkten sorge ich dafür, dass du dich jeden Tag besonders fühlst.</p>
+      <a href="#kontakt" class="btn btn-primary">Mehr über mich<svg class="icon"><use href="#i-arrow"/></svg></a>
+    </div>
+    <div class="about-img"><img src="img/carrie.jpg" alt="Carrie, Lash Artist" loading="lazy"></div>
+  </div>
+
+  <div class="why">
+    <h2 class="reveal">Warum All About Eyes?</h2>
+    <div class="why-list">
+      <div class="why-item reveal"><span class="why-icon"><svg class="icon"><use href="#i-people"/></svg></span><div><h3>Individuelle Beratung</h3><p>Dein Look, meine Expertise – ganz auf dich abgestimmt.</p></div></div>
+      <div class="why-item reveal"><span class="why-icon"><svg class="icon"><use href="#i-diamond"/></svg></span><div><h3>Hochwertige Produkte</h3><p>Nur das Beste für deine Wimpern und Augenbrauen.</p></div></div>
+      <div class="why-item reveal"><span class="why-icon"><svg class="icon"><use href="#i-shield"/></svg></span><div><h3>Sauber &amp; Hygienisch</h3><p>Höchste Hygienestandards für dein Wohlbefinden.</p></div></div>
+      <div class="why-item reveal"><span class="why-icon"><svg class="icon"><use href="#i-heart"/></svg></span><div><h3>Premium Ergebnis</h3><p>Natürliche Schönheit mit langanhaltendem WOW-Effekt.</p></div></div>
+    </div>
+    <div class="why-quote script" aria-hidden="true">Wimpern, die deine Einzigartigkeit unterstreichen. ♡</div>
+  </div>
+</section>
+
+<!-- ================= GALERIE ================= -->
+<section class="gallery" id="galerie">
+  <div class="container">
+    <div class="gallery-head">
+      <div class="section-title reveal">
+        <h2>Galerie</h2>
+        <p class="label">Echte Ergebnisse. Echte Kunden. Echte Schönheit.</p>
+      </div>
+      <div class="gallery-nav label">
+        <button id="galPrev">Vorher</button> | <button id="galNext">Nachher →</button>
+      </div>
+    </div>
+    <div class="gallery-track" id="galleryTrack">
+      <a href="img/g1.jpg" target="_blank"><img src="img/g1.jpg" alt="Wimpern Ergebnis 1"></a>
+      <a href="img/g2.jpg" target="_blank"><img src="img/g2.jpg" alt="Wimpern Ergebnis 2"></a>
+      <a href="img/g3.jpg" target="_blank"><img src="img/g3.jpg" alt="Wimpern Ergebnis 3"></a>
+      <a href="img/g4.jpg" target="_blank"><img src="img/g4.jpg" alt="Wimpern Ergebnis 4"></a>
+      <a href="img/g5.jpg" target="_blank"><img src="img/g5.jpg" alt="Wimpern Ergebnis 5"></a>
+      <a href="img/g6.jpg" target="_blank"><img src="img/g6.jpg" alt="Wimpern Ergebnis 6"></a>
+      <a href="https://instagram.com/all_about_eyes_by_carrie" target="_blank" rel="noopener" class="gallery-more">Mehr<br>Impressionen<br>in der Galerie<br>→</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= KUNDENSTIMMEN ================= -->
+<!-- ACHTUNG: Die drei Bewertungen stammen aus der Design-Vorlage und sind PLATZHALTER.
+     Vor dem Livegang durch echte Kundenstimmen (mit Einverständnis) ersetzen! -->
+<section class="reviews">
+  <div class="container">
+    <div class="section-title reveal"><h2>Das sagen meine Kundinnen</h2></div>
+    <div class="reviews-wrap">
+      <button class="arrow" id="revPrev" aria-label="Vorherige Bewertung"><svg class="icon" style="width:16px"><use href="#i-left"/></svg></button>
+      <div class="reviews-viewport">
+        <div class="reviews-track" id="reviewsTrack">
+          <div class="review"><div class="review-card"><img src="img/a1.jpg" alt=""><div><div class="stars">★★★★★</div><p>„Ich bin einfach begeistert! Carrie macht ihre Arbeit mit so viel Liebe und man fühlt sich sofort wohl. Meine Wimpern sehen traumhaft aus!“</p><strong>Sabrina K.</strong></div></div></div>
+          <div class="review"><div class="review-card"><img src="img/a2.jpg" alt=""><div><div class="stars">★★★★★</div><p>„Professionalität, Herzlichkeit und ein perfektes Ergebnis. Ich komme seit Monaten und würde es nie woanders machen lassen.“</p><strong>Melanie S.</strong></div></div></div>
+          <div class="review"><div class="review-card"><img src="img/a3.jpg" alt=""><div><div class="stars">★★★★★</div><p>„Endlich jemand, der wirklich sein Handwerk versteht! Meine Wimpern sind wunderschön und halten super lange. Absolute Empfehlung!“</p><strong>Julia M.</strong></div></div></div>
+        </div>
+      </div>
+      <button class="arrow" id="revNext" aria-label="Nächste Bewertung"><svg class="icon" style="width:16px"><use href="#i-right"/></svg></button>
+    </div>
+    <div class="dots" id="dots"></div>
+  </div>
+</section>
+
+<!-- ================= CTA / KONTAKT ================= -->
+<section class="cta" id="kontakt">
+  <div class="container cta-inner">
+    <div class="cta-title">Bereit für deinen<br>neuen Lieblingslook? ♡</div>
+    <a href="https://wa.me/4915153319572" target="_blank" rel="noopener" class="btn btn-primary">Termin anfragen<svg class="icon"><use href="#i-arrow"/></svg></a>
+    <ul class="contact-list">
+      <li><span class="dot"><svg class="icon"><use href="#i-phone"/></svg></span><a href="tel:+4915153319572">0151-53319572</a></li>
+      <li><span class="dot"><svg class="icon"><use href="#i-mail"/></svg></span><a href="mailto:carrie.carinthia@gmail.com">carrie.carinthia@gmail.com</a></li>
+      <li><span class="dot"><svg class="icon"><use href="#i-insta"/></svg></span><a href="https://instagram.com/all_about_eyes_by_carrie" target="_blank" rel="noopener">all_about_eyes_by_carrie</a></li>
+    </ul>
+    <div class="cta-logo">
+      <span class="logo-mark">AC</span>
+      <div>All About Eyes by Carrie</div>
+      <div class="label" style="font-size:9px">Lash Artist</div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container footer-inner">
+    <ul class="footer-links">
+      <li><a href="#start">Start</a></li><li><a href="#leistungen">Leistungen</a></li><li><a href="#leistungen">Preise</a></li>
+      <li><a href="#galerie">Galerie</a></li><li><a href="#ueber-mich">Über mich</a></li><li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <div class="footer-claim label">More than lashes<span>♥</span>More confidence<span>♥</span>A more you</div>
+    <ul class="footer-links">
+      <li><a href="impressum.html">Impressum</a></li>
+      <li><a href="datenschutz.html">Datenschutz</a></li>
+      <li class="social"><a href="https://instagram.com/all_about_eyes_by_carrie" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon"><use href="#i-insta"/></svg></a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  // --- Mobiles Menü ---
+  const toggle = document.getElementById('menuToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  // --- Galerie: um eine Bildbreite weiterscrollen ---
+  const track = document.getElementById('galleryTrack');
+  const step = () => track.firstElementChild.getBoundingClientRect().width + 10;
+  document.getElementById('galPrev').onclick = () => track.scrollBy({left: -step()});
+  document.getElementById('galNext').onclick = () => track.scrollBy({left: step()});
+
+  // --- Kundenstimmen-Slider ---
+  const revTrack = document.getElementById('reviewsTrack');
+  const reviews = revTrack.children;
+  const dotsBox = document.getElementById('dots');
+  let index = 0;
+  const perView = () => window.innerWidth <= 640 ? 1 : 3;
+  const maxIndex = () => Math.max(0, reviews.length - perView());
+
+  function renderDots(){
+    dotsBox.innerHTML = '';
+    for (let i = 0; i <= maxIndex(); i++){
+      const b = document.createElement('button');
+      b.setAttribute('aria-label', 'Bewertung ' + (i + 1));
+      b.onclick = () => go(i);
+      dotsBox.appendChild(b);
+    }
+  }
+  function go(i){
+    index = (i + maxIndex() + 1) % (maxIndex() + 1);
+    revTrack.style.transform = `translateX(-${index * (100 / perView())}%)`;
+    [...dotsBox.children].forEach((d, n) => d.classList.toggle('active', n === index));
+  }
+  document.getElementById('revPrev').onclick = () => go(index - 1);
+  document.getElementById('revNext').onclick = () => go(index + 1);
+  window.addEventListener('resize', () => { renderDots(); go(Math.min(index, maxIndex())); });
+  renderDots(); go(0);
+
+  // --- Elemente beim Scrollen sanft einblenden ---
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, {threshold: .15});
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // --- Aktiven Menüpunkt beim Scrollen markieren ---
+  const sections = document.querySelectorAll('main section[id]');
+  window.addEventListener('scroll', () => {
+    let current = 'start';
+    sections.forEach(s => { if (scrollY >= s.offsetTop - 120) current = s.id; });
+    links.querySelectorAll('a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+  });
+</script>
+</body>
+</html>
