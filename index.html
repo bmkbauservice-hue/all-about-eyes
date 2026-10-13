@@ -2,7 +2,7 @@
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>All About Eyes by Carrie – Lash Artist</title>
@@ -39,7 +39,7 @@
           <stop offset="1" stop-color="#8f5a47" />
         </linearGradient>
         <symbol id="i-lash-einzel" viewBox="0 0 64 44" fill="none" stroke="url(#gold-stroke)" stroke-width="1.6" stroke-linecap="round">
-          <path d="M32.78 40.72 L32.53 39.36 L32.33 38.02 L32.17 36.69 L32.05 35.37 L31.98 34.08 L31.95 32.80 L31.96 31.53 L32.01 30.29 L32.10 29.06 L32.24 27.86 L32.41 26.68 L32.63 25.51 L32.89 24.37 L33.19 23.26 L33.53 22.16 L33.91 21.10 L34.33 20.05 L34.79 19.04 L35.29 18.04 L35.83 17.08 L36.41 16.15 L37.03 15.24 L37.70 14.37 L38.40 13.52 L39.14 12.71 L39.92 11.93 L40.74 11.18 L41.61 10.47 L42.51 9.80 L43.45 9.16 L44.43 8.56 L45.45 8.00 L46.51 7.48 L47.61 7.00 L48.75 6.57 L49.93 6.18 L51.14 5.84 L52.40 5.54 L53.68 5.29 L55.01 5.10 L54.99 4.90 L53.65 5.06 L52.34 5.25 L51.06 5.49 L49.82 5.78 L48.60 6.11 L47.42 6.49 L46.27 6.91 L45.15 7.38 L44.07 7.88 L43.02 8.43 L42.00 9.03 L41.02 9.66 L40.07 10.34 L39.15 11.05 L38.27 11.81 L37.43 12.61 L36.62 13.44 L35.85 14.31 L35.12 15.22 L34.42 16.17 L33.76 17.15 L33.15 18.16 L32.57 19.21 L32.03 20.30 L31.53 21.41 L31.07 22.55 L30.66 23.73 L30.29 24.93 L29.96 26.16 L29.67 27.42 L29.42 28.71 L29.22 30.01 L29.06 31.35 L28.95 32.71 L28.88 34.08 L28.86 35.48 L28.88 36.91 L28.95 38.35 L29.06 39.80 L29.22 41.28Z" fill="url(#gold-stroke)" stroke="none" />
+          <path d="M32 40C31 26 33 14 43 5" />
           <path d="M20 41.5Q32 44 44 41.5" />
         </symbol>
         <symbol id="i-lash-klein" viewBox="0 0 64 44" fill="none" stroke="url(#gold-stroke)" stroke-width="1.6" stroke-linecap="round">
@@ -60,6 +60,10 @@
           <path d="M32 40Q47.8 30.5 56.5 17.9" />
           <path d="M32 40Q49.5 35.4 61.0 25.8" />
           <path d="M20 41.5Q32 44 44 41.5" />
+        </symbol>
+        <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="#a56b55" stroke-width="1.6" stroke-linecap="round">
+          <circle cx="12" cy="12" r="9.5" />
+          <path d="M12 11v5.5M12 7.6h.01" />
         </symbol>
         <symbol id="i-clock" viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="9" />
@@ -224,7 +228,7 @@
       </section>
 
       <div class="tagline-band label">
-        More than Lashes<span>♥</span>More Confidence<span>♥</span>A more you
+        <span class="tl-part">More than Lashes</span><span class="heart" aria-hidden="true">♥</span><span class="tl-part">More Confidence</span><span class="heart" aria-hidden="true">♥</span><span class="tl-part">A more you</span>
       </div>
 
       <!-- ================= LEISTUNGEN & PREISE ================= -->
@@ -482,6 +486,17 @@
         </ul>
       </div>
     </footer>
+
+    <!-- Feste Buchungsleiste (nur Handy, erscheint nach dem Hero) -->
+    <div class="book-bar" id="bookBar">
+      <a
+        href="https://beautinda.de/book/xEGtsmfsVZZhyMDmw6BxHkJbhem1/orders"
+        target="_blank"
+        rel="noopener"
+        class="btn btn-primary"
+        >Termin online buchen<svg class="icon"><use href="#i-arrow" /></svg
+      ></a>
+    </div>
 
     <script src="js/preise.js"></script>
     <script src="js/main.js"></script>

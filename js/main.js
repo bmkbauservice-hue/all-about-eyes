@@ -65,11 +65,14 @@
       html += `<div class="lash-wrap"><div class="lash-cards" id="lashCards" tabindex="0" role="group" aria-label="Wimpern-Stile, seitlich wischbar">`;
       w.stile.forEach((st) => {
         const icon = LASH_ICONS[st.icon];
-        html += `<article class="lash-card">`;
-        if (icon) {
-          html += `<svg class="lash-icon" aria-hidden="true" focusable="false"><use href="#${icon}" /></svg>`;
+        html += `<article class="lash-card${st.highlight ? " is-highlight" : ""}">`;
+        if (st.highlight) {
+          html += `<span class="lash-badge">${esc(st.badgeText || "Beliebt")}</span>`;
         }
-        html += `<h4 class="lash-name">${esc(st.name).replace(/1:1/g, '<span class="num-lining">1:1</span>')}</h4>`;
+        if (icon) {
+          html += `<span class="lash-icon-box"><svg class="lash-icon" aria-hidden="true" focusable="false"><use href="#${icon}" /></svg></span>`;
+        }
+        html += `<h4 class="lash-name"><span>${esc(st.name).replace(/1:1/g, '<span class="num-lining">1:1</span>')}</span></h4>`;
         html += `<p class="lash-detail">${st.detail ? esc(st.detail) : "&nbsp;"}</p>`;
         html += `<p class="lash-label">${esc(w.spalten[0])}</p>`;
         html += `<p class="lash-price">${eur(st.preise[0])}</p>`;
@@ -83,8 +86,12 @@
       html += `</div><div class="lash-dots" aria-hidden="true">${w.stile
         .map(() => "<span></span>")
         .join("")}</div></div>`;
-      if (w.untertitel) html += `<p class="price-note">${esc(w.untertitel)}</p>`;
-      if (w.hinweis) html += `<p class="price-note">${esc(w.hinweis)}</p>`;
+      if (w.untertitel || w.hinweis) {
+        html += `<div class="info-box"><svg class="info-icon" aria-hidden="true" focusable="false"><use href="#i-info" /></svg><div>`;
+        if (w.untertitel) html += `<p class="info-title">${esc(w.untertitel)}</p>`;
+        if (w.hinweis) html += `<p>${esc(w.hinweis)}</p>`;
+        html += `</div></div>`;
+      }
       html += `</div>`;
     }
 
@@ -95,7 +102,7 @@
       ex.eintraege.forEach((e) => {
         html += `<li class="pill"><span class="pill-name">${esc(e.name)}${
           e.detail ? `<small>${esc(e.detail)}</small>` : ""
-        }</span><span class="pill-price">${e.zuschlag ? "+ " : ""}${eur(e.preis)}</span></li>`;
+        }</span><span class="pill-dots" aria-hidden="true"></span><span class="pill-price">${e.zuschlag ? "+ " : ""}${eur(e.preis)}</span></li>`;
       });
       html += `</ul></div>`;
     }
@@ -149,18 +156,35 @@
       items.forEach((el) => el.classList.add("visible"));
       return;
     }
+    const zeigen = (el) => {
+      el.classList.add("visible");
+      obs.unobserve(el);
+    };
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("visible");
-            obs.unobserve(e.target);
+          // sichtbar ODER bereits oberhalb des Bildausschnitts (z. B. nach einem Anker-Sprung)
+          if (e.isIntersecting || e.boundingClientRect.top < 0) {
+            zeigen(e.target);
           }
         });
       },
       { threshold: 0.05, rootMargin: "0px 0px -8% 0px" },
     );
     items.forEach((el) => obs.observe(el));
+
+    // Alles oberhalb des Anker-Ziels sofort einblenden (Laden mit #anker, hashchange)
+    const obenZeigen = () => {
+      const id = decodeURIComponent(window.location.hash.slice(1));
+      const ziel = id && document.getElementById(id);
+      if (!ziel) return;
+      const zielTop = ziel.getBoundingClientRect().top + window.scrollY;
+      items.forEach((el) => {
+        if (el.getBoundingClientRect().top + window.scrollY < zielTop) zeigen(el);
+      });
+    };
+    window.addEventListener("hashchange", obenZeigen);
+    obenZeigen();
   }
 
   // --- Aktiven Menüpunkt beim Scrollen markieren ---
@@ -184,9 +208,34 @@
     });
   }
 
+  // --- Feste Buchungsleiste (Handy): nach dem Hero einblenden, am Kontaktbereich ausblenden ---
+  function initBookBar() {
+    const bar = document.getElementById("bookBar");
+    const hero = document.getElementById("start");
+    const kontakt = document.getElementById("kontakt");
+    if (!bar || !hero || !kontakt || !("IntersectionObserver" in window)) return;
+    let heroOut = false;
+    let kontaktSichtbar = false;
+    const update = () =>
+      bar.classList.toggle("is-visible", heroOut && !kontaktSichtbar);
+    new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        heroOut = !e.isIntersecting && e.boundingClientRect.top < 0;
+      });
+      update();
+    }).observe(hero);
+    new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        kontaktSichtbar = e.isIntersecting;
+      });
+      update();
+    }).observe(kontakt);
+  }
+
   initMenu();
   initAgbCheck();
   renderPreise();
   initReveal();
   initActiveNav();
+  initBookBar();
 })();
