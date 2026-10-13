@@ -2288,3 +2288,30 @@ footer::before {
 :root[data-theme="dark"] .theme-toggle .theme-sun {
   display: block;
 }
+
+/* ============ 404-Seite ============ */
+.notfound {
+  padding: 70px 0 90px;
+  text-align: center;
+}
+.notfound-mark {
+  font-family: var(--script);
+  font-size: clamp(100px, 22vw, 150px);
+  line-height: 1.1;
+  padding: 0.1em 0.2em;
+  background: var(--gold-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.notfound-title {
+  font-variant-numeric: lining-nums;
+  font-weight: 500;
+  font-size: 22px;
+  letter-spacing: 0.4em;
+  color: var(--text-soft);
+}
+.notfound-text {
+  font-size: 24px;
+  margin: 10px 0 28px;
+}
