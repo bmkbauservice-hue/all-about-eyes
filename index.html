@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>All About Eyes by Carrie – Lash Artist</title>
     <meta
       name="description"
@@ -15,6 +17,50 @@
     <!-- SVG-Icons einmal definieren, dann per <use> wiederverwenden -->
     <svg width="0" height="0" style="position: absolute">
       <defs>
+        <linearGradient id="ig-grad" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0" stop-color="#FEDA75" />
+          <stop offset="0.25" stop-color="#FA7E1E" />
+          <stop offset="0.5" stop-color="#D62976" />
+          <stop offset="0.75" stop-color="#962FBF" />
+          <stop offset="1" stop-color="#4F5BD5" />
+        </linearGradient>
+        <symbol id="i-insta-color" viewBox="0 0 24 24">
+          <rect x="2" y="2" width="20" height="20" rx="5.6" fill="none" stroke="url(#ig-grad)" stroke-width="2" />
+          <circle cx="12" cy="12" r="4.6" fill="none" stroke="url(#ig-grad)" stroke-width="2" />
+          <circle cx="17.7" cy="6.3" r="1.25" fill="url(#ig-grad)" stroke="none" />
+        </symbol>
+        <symbol id="i-whatsapp-color" viewBox="0 0 24 24">
+          <path d="M20.433 3.432C18.206 1.22 15.189 -0.015 12.05 -0C5.495 0 0.16 5.335 0.157 11.892C0.157 13.988 0.704 16.034 1.745 17.837L0.057 24L6.362 22.346C8.106 23.296 10.059 23.794 12.045 23.794H12.05C18.604 23.794 23.94 18.459 23.943 11.901C23.953 8.745 22.7 5.715 20.463 3.488L20.433 3.432Z" fill="#25D366" stroke="none" />
+          <path d="M17.472 14.382C17.175 14.233 15.714 13.515 15.442 13.415C15.169 13.316 14.971 13.267 14.772 13.565C14.575 13.862 14.005 14.531 13.832 14.729C13.659 14.928 13.485 14.952 13.188 14.804C12.888 14.654 11.925 14.339 10.785 13.319C9.897 12.524 9.301 11.549 9.125 11.249C8.951 10.949 9.106 10.784 9.255 10.634C9.391 10.499 9.556 10.289 9.706 10.114C9.852 9.933 9.9 9.813 10.003 9.618C10.103 9.408 10.052 9.243 9.978 9.094C9.903 8.944 9.306 7.474 9.056 6.888C8.816 6.304 8.569 6.378 8.384 6.378C8.212 6.363 8.013 6.363 7.813 6.363C7.613 6.363 7.29 6.437 7.016 6.722C6.743 7.022 5.971 7.742 5.971 9.197C5.971 10.652 7.041 12.062 7.19 12.272C7.339 12.452 9.285 15.467 12.266 16.755C12.975 17.055 13.529 17.244 13.96 17.381C14.672 17.607 15.32 17.575 15.832 17.499C16.403 17.414 17.59 16.78 17.838 16.086C18.086 15.39 18.086 14.797 18.011 14.673C17.937 14.549 17.739 14.475 17.441 14.326Z" fill="#fff" stroke="none" />
+        </symbol>
+        <linearGradient id="gold-stroke" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="64" y2="44">
+          <stop offset="0" stop-color="#8f5a47" />
+          <stop offset="0.5" stop-color="#c08a74" />
+          <stop offset="1" stop-color="#8f5a47" />
+        </linearGradient>
+        <symbol id="i-lash-einzel" viewBox="0 0 64 44" fill="none" stroke="url(#gold-stroke)" stroke-width="1.6" stroke-linecap="round">
+          <path d="M32.78 40.72 L32.53 39.36 L32.33 38.02 L32.17 36.69 L32.05 35.37 L31.98 34.08 L31.95 32.80 L31.96 31.53 L32.01 30.29 L32.10 29.06 L32.24 27.86 L32.41 26.68 L32.63 25.51 L32.89 24.37 L33.19 23.26 L33.53 22.16 L33.91 21.10 L34.33 20.05 L34.79 19.04 L35.29 18.04 L35.83 17.08 L36.41 16.15 L37.03 15.24 L37.70 14.37 L38.40 13.52 L39.14 12.71 L39.92 11.93 L40.74 11.18 L41.61 10.47 L42.51 9.80 L43.45 9.16 L44.43 8.56 L45.45 8.00 L46.51 7.48 L47.61 7.00 L48.75 6.57 L49.93 6.18 L51.14 5.84 L52.40 5.54 L53.68 5.29 L55.01 5.10 L54.99 4.90 L53.65 5.06 L52.34 5.25 L51.06 5.49 L49.82 5.78 L48.60 6.11 L47.42 6.49 L46.27 6.91 L45.15 7.38 L44.07 7.88 L43.02 8.43 L42.00 9.03 L41.02 9.66 L40.07 10.34 L39.15 11.05 L38.27 11.81 L37.43 12.61 L36.62 13.44 L35.85 14.31 L35.12 15.22 L34.42 16.17 L33.76 17.15 L33.15 18.16 L32.57 19.21 L32.03 20.30 L31.53 21.41 L31.07 22.55 L30.66 23.73 L30.29 24.93 L29.96 26.16 L29.67 27.42 L29.42 28.71 L29.22 30.01 L29.06 31.35 L28.95 32.71 L28.88 34.08 L28.86 35.48 L28.88 36.91 L28.95 38.35 L29.06 39.80 L29.22 41.28Z" fill="url(#gold-stroke)" stroke="none" />
+          <path d="M20 41.5Q32 44 44 41.5" />
+        </symbol>
+        <symbol id="i-lash-klein" viewBox="0 0 64 44" fill="none" stroke="url(#gold-stroke)" stroke-width="1.6" stroke-linecap="round">
+          <path d="M32 40Q20.7 27.6 16.1 14.6" />
+          <path d="M32 40Q25.9 24.4 26.3 10.6" />
+          <path d="M32 40Q38.1 24.4 37.7 10.6" />
+          <path d="M32 40Q43.3 27.6 47.9 14.6" />
+          <path d="M20 41.5Q32 44 44 41.5" />
+        </symbol>
+        <symbol id="i-lash-gross" viewBox="0 0 64 44" fill="none" stroke="url(#gold-stroke)" stroke-width="1.6" stroke-linecap="round">
+          <path d="M32 40Q14.5 35.4 3.0 25.8" />
+          <path d="M32 40Q16.2 30.5 7.5 17.9" />
+          <path d="M32 40Q19.3 26.2 14.2 11.6" />
+          <path d="M32 40Q23.5 23.1 22.7 7.4" />
+          <path d="M32 40Q32.0 21.3 32.0 6.0" />
+          <path d="M32 40Q40.5 23.1 41.3 7.4" />
+          <path d="M32 40Q44.7 26.2 49.8 11.6" />
+          <path d="M32 40Q47.8 30.5 56.5 17.9" />
+          <path d="M32 40Q49.5 35.4 61.0 25.8" />
+          <path d="M20 41.5Q32 44 44 41.5" />
+        </symbol>
         <symbol id="i-clock" viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="9" />
           <path d="M12 7v5l3 2" />
@@ -117,10 +163,13 @@
               target="_blank"
               rel="noopener"
               aria-label="Instagram"
-              ><svg class="icon"><use href="#i-insta" /></svg
+              ><svg class="brand-icon" aria-hidden="true"><use href="#i-insta-color" /></svg
             ></a>
-            <a href="#kontakt" aria-label="Termin anfragen"
-              ><svg class="icon"><use href="#i-chat" /></svg
+            <a
+              href="#kontakt"
+              title="Zur WhatsApp-Anfrage"
+              aria-label="Zur WhatsApp-Anfrage im Kontaktbereich"
+              ><svg class="brand-icon" aria-hidden="true"><use href="#i-whatsapp-color" /></svg
             ></a>
           </span>
           <button
@@ -154,7 +203,9 @@
           <li>Always you</li>
         </ul>
         <div class="hero-content">
-          <div class="hero-monogram" aria-hidden="true">AC</div>
+          <div class="hero-mono" aria-hidden="true">
+            <div class="hero-monogram">AC</div>
+          </div>
           <h1 class="hero-name">All About Eyes by Carrie</h1>
           <p class="hero-role label"><span>Lash Artist</span></p>
           <p class="hero-slogan script">
@@ -178,7 +229,7 @@
 
       <!-- ================= LEISTUNGEN & PREISE ================= -->
       <section class="services" id="leistungen">
-        <div class="container">
+        <div class="container reveal">
           <div class="section-title reveal">
             <h2>Leistungen &amp; Preise</h2>
             <p class="label">
@@ -199,7 +250,7 @@
 
       <!-- ================= ÜBER MICH + WARUM ================= -->
       <section class="about-why" id="ueber-mich">
-        <div class="about">
+        <div class="about reveal">
           <div class="about-text reveal">
             <h2>Über mich</h2>
             <span class="script">Carrie ♡</span>
@@ -217,7 +268,7 @@
           </div>
         </div>
 
-        <div class="why">
+        <div class="why reveal">
           <h2 class="reveal">Warum All About Eyes?</h2>
           <div class="why-list">
             <div class="why-item reveal">
@@ -279,7 +330,7 @@
 
       <!-- ================= GALERIE ================= -->
       <section class="gallery" id="galerie">
-        <div class="container">
+        <div class="container reveal">
           <div class="gallery-head">
             <div class="section-title reveal">
               <h2>Inspiration</h2>
@@ -325,79 +376,9 @@
         </div>
       </section>
 
-      <!-- AUSKOMMENTIERT: Bewertungen waren Platzhalter aus der Design-Vorlage. Erst mit echten Kundenstimmen (mit Einverständnis) wieder aktivieren.
-      <!-- ================= KUNDENSTIMMEN ================= - ->
-      <!-- ACHTUNG: Die drei Bewertungen stammen aus der Design-Vorlage und sind PLATZHALTER.
-     Vor dem Livegang durch echte Kundenstimmen (mit Einverständnis) ersetzen! - ->
-      <section class="reviews">
-        <div class="container">
-          <div class="section-title reveal">
-            <h2>Das sagen meine Kundinnen</h2>
-          </div>
-          <div class="reviews-wrap">
-            <button class="arrow" id="revPrev" aria-label="Vorherige Bewertung">
-              <svg class="icon" style="width: 16px"><use href="#i-left" /></svg>
-            </button>
-            <div class="reviews-viewport">
-              <div class="reviews-track" id="reviewsTrack">
-                <div class="review">
-                  <div class="review-card">
-                    <img src="img/a1.jpg" alt="" />
-                    <div>
-                      <div class="stars">★★★★★</div>
-                      <p>
-                        „Ich bin einfach begeistert! Carrie macht ihre Arbeit
-                        mit so viel Liebe und man fühlt sich sofort wohl. Meine
-                        Wimpern sehen traumhaft aus!“
-                      </p>
-                      <strong>Sabrina K.</strong>
-                    </div>
-                  </div>
-                </div>
-                <div class="review">
-                  <div class="review-card">
-                    <img src="img/a2.jpg" alt="" />
-                    <div>
-                      <div class="stars">★★★★★</div>
-                      <p>
-                        „Professionalität, Herzlichkeit und ein perfektes
-                        Ergebnis. Ich komme seit Monaten und würde es nie
-                        woanders machen lassen.“
-                      </p>
-                      <strong>Melanie S.</strong>
-                    </div>
-                  </div>
-                </div>
-                <div class="review">
-                  <div class="review-card">
-                    <img src="img/a3.jpg" alt="" />
-                    <div>
-                      <div class="stars">★★★★★</div>
-                      <p>
-                        „Endlich jemand, der wirklich sein Handwerk versteht!
-                        Meine Wimpern sind wunderschön und halten super lange.
-                        Absolute Empfehlung!“
-                      </p>
-                      <strong>Julia M.</strong>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <button class="arrow" id="revNext" aria-label="Nächste Bewertung">
-              <svg class="icon" style="width: 16px">
-                <use href="#i-right" />
-              </svg>
-            </button>
-          </div>
-          <div class="dots" id="dots"></div>
-        </div>
-      </section>
-      -->
-
       <!-- ================= CTA / KONTAKT ================= -->
       <section class="cta" id="kontakt">
-        <div class="container cta-inner">
+        <div class="container cta-inner reveal">
           <div class="cta-title">
             Bereit für deinen<br />neuen Lieblingslook? ♡
           </div>
@@ -447,8 +428,8 @@
               >
             </li>
             <li>
-              <span class="dot"
-                ><svg class="icon"><use href="#i-insta" /></svg></span
+              <span class="dot dot-brand"
+                ><svg class="brand-icon" aria-hidden="true"><use href="#i-insta-color" /></svg></span
               ><a
                 href="https://instagram.com/all_about_eyes_by_carrie"
                 target="_blank"
@@ -495,7 +476,7 @@
               target="_blank"
               rel="noopener"
               aria-label="Instagram"
-              ><svg class="icon"><use href="#i-insta" /></svg
+              ><svg class="brand-icon" aria-hidden="true"><use href="#i-insta-color" /></svg
             ></a>
           </li>
         </ul>
@@ -503,149 +484,6 @@
     </footer>
 
     <script src="js/preise.js"></script>
-    <script>
-      // --- Mobiles Menü ---
-      const toggle = document.getElementById("menuToggle");
-      const links = document.getElementById("navLinks");
-      toggle.addEventListener("click", () => {
-        const open = links.classList.toggle("open");
-        toggle.setAttribute("aria-expanded", open);
-      });
-      links
-        .querySelectorAll("a")
-        .forEach((a) =>
-          a.addEventListener("click", () => links.classList.remove("open")),
-        );
-
-      /* Kundenstimmen-Slider deaktiviert (Sektion ist auskommentiert)
-      // --- Kundenstimmen-Slider ---
-      const revTrack = document.getElementById("reviewsTrack");
-      const reviews = revTrack.children;
-      const dotsBox = document.getElementById("dots");
-      let index = 0;
-      const perView = () => (window.innerWidth <= 640 ? 1 : 3);
-      const maxIndex = () => Math.max(0, reviews.length - perView());
-
-      function renderDots() {
-        dotsBox.innerHTML = "";
-        for (let i = 0; i <= maxIndex(); i++) {
-          const b = document.createElement("button");
-          b.setAttribute("aria-label", "Bewertung " + (i + 1));
-          b.onclick = () => go(i);
-          dotsBox.appendChild(b);
-        }
-      }
-      function go(i) {
-        index = (i + maxIndex() + 1) % (maxIndex() + 1);
-        revTrack.style.transform = `translateX(-${index * (100 / perView())}%)`;
-        [...dotsBox.children].forEach((d, n) =>
-          d.classList.toggle("active", n === index),
-        );
-      }
-      document.getElementById("revPrev").onclick = () => go(index - 1);
-      document.getElementById("revNext").onclick = () => go(index + 1);
-      window.addEventListener("resize", () => {
-        renderDots();
-        go(Math.min(index, maxIndex()));
-      });
-      renderDots();
-      go(0);
-      */
-
-      // --- Terminanfrage erst nach AGB-Bestätigung ---
-      const agbCheck = document.getElementById("agbCheck");
-      const terminBtn = document.getElementById("terminBtn");
-      const syncTermin = () => {
-        const ok = agbCheck.checked;
-        terminBtn.setAttribute("aria-disabled", String(!ok));
-        terminBtn.tabIndex = ok ? 0 : -1;
-      };
-      agbCheck.addEventListener("change", syncTermin);
-      terminBtn.addEventListener("click", (e) => {
-        if (!agbCheck.checked) e.preventDefault();
-      });
-      syncTermin();
-
-      // --- Preise aus js/preise.js aufbauen ---
-      (function renderPreise() {
-        const box = document.getElementById("preise");
-        const eur = (n) => (n === 0 ? "kostenlos" : n + "\u00a0€");
-        const esc = (t) =>
-          String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;");
-        let html = "";
-
-        const w = PREISE.wimpern;
-        if (w && w.sichtbar) {
-          html += `<div class="price-block reveal"><h3>${esc(w.titel)}</h3>`;
-          html += `<p class="price-sub">${esc(w.untertitel)}</p>`;
-          html += `<table class="price-table"><thead><tr><th scope="col">Stil</th>`;
-          html += w.spalten.map((c) => `<th scope="col">${esc(c)}</th>`).join("");
-          html += `</tr></thead><tbody>`;
-          w.stile.forEach((st) => {
-            html += `<tr><th scope="row">${esc(st.name)}${
-              st.detail ? `<small>${esc(st.detail)}</small>` : ""
-            }</th>`;
-            st.preise.forEach((p, i) => {
-              html += `<td data-label="${esc(w.spalten[i])}">${eur(p)}</td>`;
-            });
-            html += `</tr>`;
-          });
-          html += `</tbody></table>`;
-          if (w.hinweis) html += `<p class="price-note">${esc(w.hinweis)}</p>`;
-          html += `</div>`;
-        }
-
-        const liste = (g) => {
-          let h = `<div class="price-block"><h3>${esc(g.titel)}</h3><ul class="price-list">`;
-          g.eintraege.forEach((e) => {
-            h += `<li><span>${esc(e.name)}${
-              e.detail ? `<small>${esc(e.detail)}</small>` : ""
-            }</span><span class="amount">${e.zuschlag ? "+\u00a0" : ""}${eur(e.preis)}</span></li>`;
-          });
-          return h + `</ul></div>`;
-        };
-        if (PREISE.extras && PREISE.extras.sichtbar) {
-          html += `<div class="reveal">${liste(PREISE.extras)}</div>`;
-        }
-        const paare = Object.keys(PREISE)
-          .filter((k) => k !== "wimpern" && k !== "extras" && PREISE[k].sichtbar)
-          .map((k) => liste(PREISE[k]));
-        if (paare.length) {
-          html += `<div class="price-lists reveal">${paare.join("")}</div>`;
-        }
-        box.innerHTML = html;
-      })();
-
-      // --- Elemente beim Scrollen sanft einblenden ---
-      const obs = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((e) => {
-            if (e.isIntersecting) {
-              e.target.classList.add("visible");
-              obs.unobserve(e.target);
-            }
-          });
-        },
-        { threshold: 0.15 },
-      );
-      document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
-
-      // --- Aktiven Menüpunkt beim Scrollen markieren ---
-      const sections = document.querySelectorAll("main section[id]");
-      window.addEventListener("scroll", () => {
-        let current = "start";
-        sections.forEach((s) => {
-          if (scrollY >= s.offsetTop - 120) current = s.id;
-        });
-        links
-          .querySelectorAll("a")
-          .forEach((a) =>
-            a.classList.toggle(
-              "active",
-              a.getAttribute("href") === "#" + current,
-            ),
-          );
-      });
-    </script>
+    <script src="js/main.js"></script>
   </body>
 </html>
