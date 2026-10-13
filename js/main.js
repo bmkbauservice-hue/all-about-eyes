@@ -156,18 +156,35 @@
       items.forEach((el) => el.classList.add("visible"));
       return;
     }
+    const zeigen = (el) => {
+      el.classList.add("visible");
+      obs.unobserve(el);
+    };
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("visible");
-            obs.unobserve(e.target);
+          // sichtbar ODER bereits oberhalb des Bildausschnitts (z. B. nach einem Anker-Sprung)
+          if (e.isIntersecting || e.boundingClientRect.top < 0) {
+            zeigen(e.target);
           }
         });
       },
       { threshold: 0.05, rootMargin: "0px 0px -8% 0px" },
     );
     items.forEach((el) => obs.observe(el));
+
+    // Alles oberhalb des Anker-Ziels sofort einblenden (Laden mit #anker, hashchange)
+    const obenZeigen = () => {
+      const id = decodeURIComponent(window.location.hash.slice(1));
+      const ziel = id && document.getElementById(id);
+      if (!ziel) return;
+      const zielTop = ziel.getBoundingClientRect().top + window.scrollY;
+      items.forEach((el) => {
+        if (el.getBoundingClientRect().top + window.scrollY < zielTop) zeigen(el);
+      });
+    };
+    window.addEventListener("hashchange", obenZeigen);
+    obenZeigen();
   }
 
   // --- Aktiven Menüpunkt beim Scrollen markieren ---
