@@ -150,7 +150,9 @@
           <li>Always you</li>
         </ul>
         <div class="hero-content">
-          <div class="hero-monogram" aria-hidden="true">AC</div>
+          <div class="hero-mono" aria-hidden="true">
+            <div class="hero-monogram">AC</div>
+          </div>
           <h1 class="hero-name">All About Eyes by Carrie</h1>
           <p class="hero-role label"><span>Lash Artist</span></p>
           <p class="hero-slogan script">
@@ -174,7 +176,7 @@
 
       <!-- ================= LEISTUNGEN & PREISE ================= -->
       <section class="services" id="leistungen">
-        <div class="container">
+        <div class="container reveal">
           <div class="section-title reveal">
             <h2>Leistungen &amp; Preise</h2>
             <p class="label">
@@ -195,7 +197,7 @@
 
       <!-- ================= ÜBER MICH + WARUM ================= -->
       <section class="about-why" id="ueber-mich">
-        <div class="about">
+        <div class="about reveal">
           <div class="about-text reveal">
             <h2>Über mich</h2>
             <span class="script">Carrie ♡</span>
@@ -213,7 +215,7 @@
           </div>
         </div>
 
-        <div class="why">
+        <div class="why reveal">
           <h2 class="reveal">Warum All About Eyes?</h2>
           <div class="why-list">
             <div class="why-item reveal">
@@ -258,7 +260,7 @@
 
       <!-- ================= GALERIE ================= -->
       <section class="gallery" id="galerie">
-        <div class="container">
+        <div class="container reveal">
           <div class="gallery-head">
             <div class="section-title reveal">
               <h2>Inspiration</h2>
@@ -376,7 +378,7 @@
 
       <!-- ================= CTA / KONTAKT ================= -->
       <section class="cta" id="kontakt">
-        <div class="container cta-inner">
+        <div class="container cta-inner reveal">
           <div class="cta-title">
             Bereit für deinen<br />neuen Lieblingslook? ♡
           </div>
@@ -588,7 +590,7 @@
             }
           });
         },
-        { threshold: 0.15 },
+        { threshold: 0.05, rootMargin: "0px 0px -8% 0px" },
       );
       document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
 
