@@ -1708,3 +1708,9 @@ footer::before {
       color 0.2s !important;
   }
 }
+
+/* Ziffern in "1:1" als Versalziffern (sonst wirkt die Mediäval-Eins wie ein I) */
+.num-lining {
+  font-variant-numeric: lining-nums;
+  font-feature-settings: "lnum" 1;
+}

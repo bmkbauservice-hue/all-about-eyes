@@ -9,7 +9,7 @@ const PREISE = {
     spalten: ["Neuset", "Refill 2 Wo", "Refill 3 Wo", "Refill 4 Wo"],
     // icon: einzel | klein | gross (Dichte-Symbol auf der Karte)
     stile: [
-      { name: "1:1 Mascara Look", icon: "einzel", preise: [100, 40, 50, 60] },
+      { name: "1:1 Mascara Look", detail: "Klassisch", icon: "einzel", preise: [100, 40, 50, 60] },
       { name: "Leichtes Volumen", detail: "3D–4D", icon: "klein", preise: [105, 45, 55, 65] },
       { name: "Mega Volumen", detail: "5D–10D", icon: "gross", preise: [115, 50, 60, 70] },
     ],

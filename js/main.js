@@ -69,7 +69,7 @@
         if (icon) {
           html += `<svg class="lash-icon" aria-hidden="true" focusable="false"><use href="#${icon}" /></svg>`;
         }
-        html += `<h4 class="lash-name">${esc(st.name)}</h4>`;
+        html += `<h4 class="lash-name">${esc(st.name).replace(/1:1/g, '<span class="num-lining">1:1</span>')}</h4>`;
         html += `<p class="lash-detail">${st.detail ? esc(st.detail) : "&nbsp;"}</p>`;
         html += `<p class="lash-label">${esc(w.spalten[0])}</p>`;
         html += `<p class="lash-price">${eur(st.preise[0])}</p>`;
