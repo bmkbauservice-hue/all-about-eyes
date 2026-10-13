@@ -1861,3 +1861,23 @@ footer::before {
   font-size: clamp(20px, 1.9vw, 28px);
   letter-spacing: 0.1em;
 }
+
+/* Icon-Box mit fester Höhe: Icons unten bündig, Namen/Preise/Zeitstrahl auf einer Linie */
+.lash-icon-box {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  height: 64px;
+  margin-bottom: 14px;
+}
+.lash-icon-box .lash-icon {
+  margin-bottom: 0;
+}
+/* Brauen- und Waxing-Box gleich hoch, Inhalt oben */
+.menu-cols {
+  align-items: stretch;
+}
+.menu-card {
+  align-self: stretch;
+}

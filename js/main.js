@@ -70,7 +70,7 @@
           html += `<span class="lash-badge">${esc(st.badgeText || "Beliebt")}</span>`;
         }
         if (icon) {
-          html += `<svg class="lash-icon" aria-hidden="true" focusable="false"><use href="#${icon}" /></svg>`;
+          html += `<span class="lash-icon-box"><svg class="lash-icon" aria-hidden="true" focusable="false"><use href="#${icon}" /></svg></span>`;
         }
         html += `<h4 class="lash-name"><span>${esc(st.name).replace(/1:1/g, '<span class="num-lining">1:1</span>')}</span></h4>`;
         html += `<p class="lash-detail">${st.detail ? esc(st.detail) : "&nbsp;"}</p>`;
