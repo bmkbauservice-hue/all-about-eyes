@@ -36,54 +36,109 @@
   }
 
   // --- Preise aus js/preise.js aufbauen ---
+  // Alle Texte stammen aus preise.js und werden escaped; die Symbole kommen
+  // aus einer festen Liste (Sprite in index.html), nicht aus den Daten.
+  const LASH_ICONS = {
+    einzel: "i-lash-einzel",
+    klein: "i-lash-klein",
+    gross: "i-lash-gross",
+  };
+
   function renderPreise() {
     const box = document.getElementById("preise");
     if (!box || typeof PREISE === "undefined") return;
-    const eur = (n) => (n === 0 ? "kostenlos" : n + "\u00a0€");
+    const eur = (n) => (n === 0 ? "kostenlos" : n + " €");
     const esc = (t) =>
-      String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;");
+      String(t)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/"/g, "&quot;");
     let html = "";
-  
+
+    // Wimpern: eine Karte pro Stil
     const w = PREISE.wimpern;
     if (w && w.sichtbar) {
+      const refillLabels = w.spalten
+        .slice(1)
+        .map((c) => c.replace(/^Refill\s*/i, ""));
       html += `<div class="price-block reveal"><h3>${esc(w.titel)}</h3>`;
-      html += `<p class="price-sub">${esc(w.untertitel)}</p>`;
-      html += `<table class="price-table"><thead><tr><th scope="col">Stil</th>`;
-      html += w.spalten.map((c) => `<th scope="col">${esc(c)}</th>`).join("");
-      html += `</tr></thead><tbody>`;
+      html += `<div class="lash-wrap"><div class="lash-cards" id="lashCards" tabindex="0" role="group" aria-label="Wimpern-Stile, seitlich wischbar">`;
       w.stile.forEach((st) => {
-        html += `<tr><th scope="row">${esc(st.name)}${
-          st.detail ? `<small>${esc(st.detail)}</small>` : ""
-        }</th>`;
-        st.preise.forEach((p, i) => {
-          html += `<td data-label="${esc(w.spalten[i])}">${eur(p)}</td>`;
+        const icon = LASH_ICONS[st.icon];
+        html += `<article class="lash-card">`;
+        if (icon) {
+          html += `<svg class="lash-icon" aria-hidden="true" focusable="false"><use href="#${icon}" /></svg>`;
+        }
+        html += `<h4 class="lash-name">${esc(st.name)}</h4>`;
+        html += `<p class="lash-detail">${st.detail ? esc(st.detail) : "&nbsp;"}</p>`;
+        html += `<p class="lash-label">${esc(w.spalten[0])}</p>`;
+        html += `<p class="lash-price">${eur(st.preise[0])}</p>`;
+        html += `<p class="lash-label lash-refill-label">Auffüllen</p>`;
+        html += `<ol class="timeline">`;
+        refillLabels.forEach((label, i) => {
+          html += `<li><span class="tl-when">${esc(label)}</span><span class="tl-dot" aria-hidden="true"></span><span class="tl-price">${eur(st.preise[i + 1])}</span></li>`;
         });
-        html += `</tr>`;
+        html += `</ol></article>`;
       });
-      html += `</tbody></table>`;
+      html += `</div><div class="lash-dots" aria-hidden="true">${w.stile
+        .map(() => "<span></span>")
+        .join("")}</div></div>`;
+      if (w.untertitel) html += `<p class="price-note">${esc(w.untertitel)}</p>`;
       if (w.hinweis) html += `<p class="price-note">${esc(w.hinweis)}</p>`;
       html += `</div>`;
     }
-  
-    const liste = (g) => {
-      let h = `<div class="price-block"><h3>${esc(g.titel)}</h3><ul class="price-list">`;
-      g.eintraege.forEach((e) => {
-        h += `<li><span>${esc(e.name)}${
+
+    // Extras als Pills
+    const ex = PREISE.extras;
+    if (ex && ex.sichtbar) {
+      html += `<div class="price-block reveal"><h3>${esc(ex.titel)}</h3><ul class="pill-row">`;
+      ex.eintraege.forEach((e) => {
+        html += `<li class="pill"><span class="pill-name">${esc(e.name)}${
           e.detail ? `<small>${esc(e.detail)}</small>` : ""
-        }</span><span class="amount">${e.zuschlag ? "+\u00a0" : ""}${eur(e.preis)}</span></li>`;
+        }</span><span class="pill-price">${e.zuschlag ? "+ " : ""}${eur(e.preis)}</span></li>`;
       });
-      return h + `</ul></div>`;
-    };
-    if (PREISE.extras && PREISE.extras.sichtbar) {
-      html += `<div class="reveal">${liste(PREISE.extras)}</div>`;
+      html += `</ul></div>`;
     }
-    const paare = Object.keys(PREISE)
+
+    // Augenbrauen, Waxing usw. im Menükarten-Stil
+    const menus = Object.keys(PREISE)
       .filter((k) => k !== "wimpern" && k !== "extras" && PREISE[k].sichtbar)
-      .map((k) => liste(PREISE[k]));
-    if (paare.length) {
-      html += `<div class="price-lists reveal">${paare.join("")}</div>`;
+      .map((k) => {
+        const g = PREISE[k];
+        let h = `<section class="menu-card"><h3>${esc(g.titel)}</h3><ul class="menu-list">`;
+        g.eintraege.forEach((e) => {
+          h += `<li><div class="menu-line"><span class="menu-name">${esc(e.name)}</span><span class="menu-dots" aria-hidden="true"></span><span class="menu-price">${e.zuschlag ? "+ " : ""}${eur(e.preis)}</span></div>${
+            e.detail ? `<small class="menu-detail">${esc(e.detail)}</small>` : ""
+          }</li>`;
+        });
+        return h + `</ul></section>`;
+      });
+    if (menus.length) {
+      html += `<div class="menu-cols reveal">${menus.join("")}</div>`;
     }
     box.innerHTML = html;
+    initLashDots();
+  }
+
+  // Punkt-Anzeige für die wischbaren Karten (nur Deko, auf dem Handy sichtbar)
+  function initLashDots() {
+    const scroller = document.getElementById("lashCards");
+    if (!scroller || !("IntersectionObserver" in window)) return;
+    const cards = scroller.querySelectorAll(".lash-card");
+    const dots = scroller.parentElement.querySelectorAll(".lash-dots span");
+    if (!dots.length) return;
+    dots[0].classList.add("active");
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          const i = [...cards].indexOf(e.target);
+          dots.forEach((d, n) => d.classList.toggle("active", n === i));
+        });
+      },
+      { root: scroller, threshold: 0.6 },
+    );
+    cards.forEach((c) => obs.observe(c));
   }
 
   // --- Elemente beim Scrollen sanft einblenden (einmal pro Element) ---
