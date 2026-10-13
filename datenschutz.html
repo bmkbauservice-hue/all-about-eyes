@@ -11,6 +11,22 @@
     <!-- SVG-Icons einmal definieren, dann per <use> wiederverwenden -->
     <svg width="0" height="0" style="position: absolute">
       <defs>
+        <linearGradient id="ig-grad" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0" stop-color="#FEDA75" />
+          <stop offset="0.25" stop-color="#FA7E1E" />
+          <stop offset="0.5" stop-color="#D62976" />
+          <stop offset="0.75" stop-color="#962FBF" />
+          <stop offset="1" stop-color="#4F5BD5" />
+        </linearGradient>
+        <symbol id="i-insta-color" viewBox="0 0 24 24">
+          <rect x="2" y="2" width="20" height="20" rx="5.6" fill="none" stroke="url(#ig-grad)" stroke-width="2" />
+          <circle cx="12" cy="12" r="4.6" fill="none" stroke="url(#ig-grad)" stroke-width="2" />
+          <circle cx="17.7" cy="6.3" r="1.25" fill="url(#ig-grad)" stroke="none" />
+        </symbol>
+        <symbol id="i-whatsapp-color" viewBox="0 0 24 24">
+          <path d="M20.433 3.432C18.206 1.22 15.189 -0.015 12.05 -0C5.495 0 0.16 5.335 0.157 11.892C0.157 13.988 0.704 16.034 1.745 17.837L0.057 24L6.362 22.346C8.106 23.296 10.059 23.794 12.045 23.794H12.05C18.604 23.794 23.94 18.459 23.943 11.901C23.953 8.745 22.7 5.715 20.463 3.488L20.433 3.432Z" fill="#25D366" stroke="none" />
+          <path d="M17.472 14.382C17.175 14.233 15.714 13.515 15.442 13.415C15.169 13.316 14.971 13.267 14.772 13.565C14.575 13.862 14.005 14.531 13.832 14.729C13.659 14.928 13.485 14.952 13.188 14.804C12.888 14.654 11.925 14.339 10.785 13.319C9.897 12.524 9.301 11.549 9.125 11.249C8.951 10.949 9.106 10.784 9.255 10.634C9.391 10.499 9.556 10.289 9.706 10.114C9.852 9.933 9.9 9.813 10.003 9.618C10.103 9.408 10.052 9.243 9.978 9.094C9.903 8.944 9.306 7.474 9.056 6.888C8.816 6.304 8.569 6.378 8.384 6.378C8.212 6.363 8.013 6.363 7.813 6.363C7.613 6.363 7.29 6.437 7.016 6.722C6.743 7.022 5.971 7.742 5.971 9.197C5.971 10.652 7.041 12.062 7.19 12.272C7.339 12.452 9.285 15.467 12.266 16.755C12.975 17.055 13.529 17.244 13.96 17.381C14.672 17.607 15.32 17.575 15.832 17.499C16.403 17.414 17.59 16.78 17.838 16.086C18.086 15.39 18.086 14.797 18.011 14.673C17.937 14.549 17.739 14.475 17.441 14.326Z" fill="#fff" stroke="none" />
+        </symbol>
         <symbol id="i-cal" viewBox="0 0 24 24">
           <rect x="3" y="5" width="18" height="16" rx="2" />
           <path d="M3 10h18M8 3v4M16 3v4M8 14h2M14 14h2M8 17h2" />
@@ -109,10 +125,10 @@
               target="_blank"
               rel="noopener"
               aria-label="Instagram"
-              ><svg class="icon"><use href="#i-insta" /></svg
+              ><svg class="brand-icon" aria-hidden="true"><use href="#i-insta-color" /></svg
             ></a>
-            <a href="index.html#kontakt" aria-label="Termin anfragen"
-              ><svg class="icon"><use href="#i-chat" /></svg
+            <a href="index.html#kontakt" aria-label="WhatsApp"
+              ><svg class="brand-icon" aria-hidden="true"><use href="#i-whatsapp-color" /></svg
             ></a>
           </span>
           <button
@@ -253,7 +269,7 @@
               target="_blank"
               rel="noopener"
               aria-label="Instagram"
-              ><svg class="icon"><use href="#i-insta" /></svg
+              ><svg class="brand-icon" aria-hidden="true"><use href="#i-insta-color" /></svg
             ></a>
           </li>
         </ul>
