@@ -232,10 +232,41 @@
     }).observe(kontakt);
   }
 
+  // --- Hell/Dunkel-Schalter (Wahl wird in localStorage gemerkt) ---
+  function initTheme() {
+    const btn = document.getElementById("themeToggle");
+    if (!btn) return;
+    const root = document.documentElement;
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    const aktuell = () => {
+      const t = root.getAttribute("data-theme");
+      return t === "dark" || t === "light" ? t : mq.matches ? "dark" : "light";
+    };
+    const beschriften = () => {
+      btn.setAttribute(
+        "aria-label",
+        aktuell() === "dark" ? "Hellen Modus einschalten" : "Dunklen Modus einschalten",
+      );
+    };
+    btn.addEventListener("click", () => {
+      const neu = aktuell() === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", neu);
+      try {
+        localStorage.setItem("theme", neu);
+      } catch (e) {
+        /* Speichern nicht möglich: Wahl gilt nur für diese Sitzung */
+      }
+      beschriften();
+    });
+    if (mq.addEventListener) mq.addEventListener("change", beschriften);
+    beschriften();
+  }
+
   initMenu();
   initAgbCheck();
   renderPreise();
   initReveal();
   initActiveNav();
   initBookBar();
+  initTheme();
 })();
