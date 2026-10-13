@@ -1706,3 +1706,13 @@ footer::before {
   letter-spacing: 0.1em;
   padding-inline: 14px;
 }
+
+/* ============ Header auf kleinen Handys: nur Monogramm ============ */
+@media (max-width: 479px) {
+  .logo-text {
+    display: none;
+  }
+  .nav {
+    gap: 8px;
+  }
+}
