@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AGB – All About Eyes by Carrie</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- SVG-Icons einmal definieren, dann per <use> wiederverwenden -->
+    <svg width="0" height="0" style="position: absolute">
+      <defs>
+        <symbol id="i-cal" viewBox="0 0 24 24">
+          <rect x="3" y="5" width="18" height="16" rx="2" />
+          <path d="M3 10h18M8 3v4M16 3v4M8 14h2M14 14h2M8 17h2" />
+        </symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24">
+          <path d="M5 12h14M13 6l6 6-6 6" />
+        </symbol>
+        <symbol id="i-diamond" viewBox="0 0 24 24">
+          <path d="M6 4h12l4 5-10 12L2 9z" />
+          <path d="M2 9h20M9 4l3 17M15 4l-3 17M6 4l3 5 3-5 3 5 3-5" />
+        </symbol>
+        <symbol id="i-heart" viewBox="0 0 24 24">
+          <path
+            d="M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11z"
+          />
+        </symbol>
+        <symbol id="i-lotus" viewBox="0 0 24 24">
+          <path d="M12 19c-3-2-4-5-4-8s2-5 4-7c2 2 4 4 4 7s-1 6-4 8z" />
+          <path
+            d="M12 19c-4 0-8-2-9-6 2-1 5-1 6 0M12 19c4 0 8-2 9-6-2-1-5-1-6 0"
+          />
+        </symbol>
+        <symbol id="i-inf" viewBox="0 0 24 24">
+          <path
+            d="M12 12c-2-3-4-4-6-4a4 4 0 0 0 0 8c2 0 4-1 6-4zm0 0c2 3 4 4 6 4a4 4 0 0 0 0-8c-2 0-4 1-6 4z"
+          />
+        </symbol>
+        <symbol id="i-people" viewBox="0 0 24 24">
+          <circle cx="9" cy="6" r="2.5" />
+          <circle cx="15.5" cy="7" r="2" />
+          <path
+            d="M5 20l1.5-8a2.5 2.5 0 0 1 5 0L13 20M13 20l1-7a1.8 1.8 0 0 1 3.5 0L19 20"
+          />
+        </symbol>
+        <symbol id="i-shield" viewBox="0 0 24 24">
+          <path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z" />
+          <path d="M8.5 12l2.5 2.5 4.5-5" />
+        </symbol>
+        <symbol id="i-insta" viewBox="0 0 24 24">
+          <rect x="3" y="3" width="18" height="18" rx="5" />
+          <circle cx="12" cy="12" r="4" />
+          <circle cx="17.5" cy="6.5" r=".6" fill="currentColor" />
+        </symbol>
+        <symbol id="i-chat" viewBox="0 0 24 24">
+          <path d="M4 20l1.3-3.8A8 8 0 1 1 8 19z" />
+          <path
+            d="M9 9c0 3 3 6 6 6l1-1.5-2-1-1 1c-1-.5-2-1.5-2.5-2.5l1-1-1-2z"
+          />
+        </symbol>
+        <symbol id="i-phone" viewBox="0 0 24 24">
+          <path
+            d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"
+          />
+        </symbol>
+        <symbol id="i-mail" viewBox="0 0 24 24">
+          <rect x="3" y="5" width="18" height="14" rx="2" />
+          <path d="M3 7l9 6 9-6" />
+        </symbol>
+        <symbol id="i-menu" viewBox="0 0 24 24">
+          <path d="M3 6h18M3 12h18M3 18h18" />
+        </symbol>
+        <symbol id="i-left" viewBox="0 0 24 24">
+          <path d="M15 6l-6 6 6 6" />
+        </symbol>
+        <symbol id="i-right" viewBox="0 0 24 24">
+          <path d="M9 6l6 6-6 6" />
+        </symbol>
+      </defs>
+    </svg>
+
+    <!-- ================= HEADER ================= -->
+    <header>
+      <nav class="container nav">
+        <a href="index.html#start" class="logo" aria-label="Zur Startseite">
+          <span class="logo-mark">AC</span>
+          <span class="logo-text"
+            ><strong>All About Eyes by Carrie</strong
+            ><span class="label">Lash Artist</span></span
+          >
+        </a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html#start" >Start</a></li>
+          <li><a href="index.html#leistungen">Leistungen</a></li>
+          <li><a href="index.html#leistungen">Preise</a></li>
+          <li><a href="index.html#galerie">Galerie</a></li>
+          <li><a href="index.html#ueber-mich">Über mich</a></li>
+          <li><a href="index.html#kontakt">Kontakt</a></li>
+        </ul>
+        <div class="nav-right">
+          <a href="index.html#kontakt" class="btn btn-primary"
+            ><svg class="icon"><use href="#i-cal" /></svg>Termin anfragen</a
+          >
+          <span class="social">
+            <a
+              href="https://instagram.com/all_about_eyes_by_carrie"
+              target="_blank"
+              rel="noopener"
+              aria-label="Instagram"
+              ><svg class="icon"><use href="#i-insta" /></svg
+            ></a>
+            <a href="index.html#kontakt" aria-label="Termin anfragen"
+              ><svg class="icon"><use href="#i-chat" /></svg
+            ></a>
+          </span>
+          <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Menü öffnen"
+            aria-expanded="false"
+          >
+            <svg class="icon" style="width: 28px; height: 28px">
+              <use href="#i-menu" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main class="legal">
+      <div class="container">
+        <div class="section-title">
+          <h2>Allgemeine Geschäftsbedingungen</h2>
+          <p class="label">All About Eyes by Carrie</p>
+        </div>
+        <div class="legal-body">
+          <p>
+            All About Eyes<br />
+            Inhaberin: Marlene Glatz<br />
+            Karlstraße 36, 16727 Velten
+          </p>
+          <p>Stand: 13.10.2026</p>
+
+          <h2>§ 1 Geltungsbereich &amp; Vertragspartner</h2>
+          <p>
+            Diese AGB gelten für alle Dienstleistungen von All About Eyes (Inh.
+            Marlene Glatz, Karlstraße 36, 16727 Velten). Mit der
+            Terminbuchung sowie mit Unterzeichnung dieser Erklärung erkennt der
+            Kunde diese AGB an.
+          </p>
+
+          <h2>§ 2 Vorbereitung &amp; Ankunft</h2>
+          <p>
+            (1) Kunden müssen mit vollständig ungeschminkten und sauberen
+            Wimpern erscheinen. Bei verunreinigten Wimpern wird eine
+            Intensivreinigung für 15,00 € berechnet (die benötigte Zeit
+            wird von der Behandlung abgezogen).
+          </p>
+          <p>
+            (2) Bitte erscheinen Sie maximal 5 Minuten vor dem Termin, um
+            Studioabläufe und Pausen nicht zu stören.
+          </p>
+
+          <h2>§ 3 Refills &amp; Neuanlagen</h2>
+          <p>
+            (1) Ein Auffüllpreis (Refill) gilt bis maximal 4 Wochen (28 Tage)
+            nach dem letzten Termin und setzt mindestens 50 % vorhandene
+            Wimpern-Extensions voraus.
+          </p>
+          <p>
+            (2) Bei weniger als 50 % Restwimpern oder ab der 5. Woche wird der
+            Preis einer Neuanlage berechnet.
+          </p>
+          <p>
+            (3) Die Behandlungszeit beim Refill ist je nach Stil auf 90 bis 105
+            Minuten begrenzt. Bei weniger als 50 % Restwimpern wird innerhalb
+            dieses Zeitfensters die maximal mögliche Fülle erbracht.
+          </p>
+
+          <h2>§ 4 Pflege &amp; Haftungsausschluss</h2>
+          <p>
+            (1) Die Wimpern sind mindestens jeden dritten Tag mit einem speziell
+            dafür vorgesehenen Wimpernshampoo zu reinigen. Für Schäden oder
+            Ausfall durch mangelnde oder falsche Pflege übernimmt das Studio
+            keine Haftung.
+          </p>
+          <p>
+            (2) Hormonelle Veränderungen (z. B. Pille, Schwangerschaft,
+            Medikamente) können die Haltbarkeit beeinträchtigen; hierfür wird
+            keine Garantie übernommen. Führt dies zu weniger als 50 %
+            Restwimpern, gilt § 3 Abs. 2.
+          </p>
+
+          <h2>§ 5 Absagen, Verspätungen &amp; Ausfallhonorar</h2>
+          <p>
+            (1) Termine müssen mindestens 24 Stunden vor dem vereinbarten Termin
+            abgesagt werden (per WhatsApp, Telefon oder E-Mail).
+          </p>
+          <p>
+            (2) Bei einer Absage unter 24 Stunden vor dem Termin oder bei
+            unentschuldigtem Nichterscheinen wird ein Ausfallhonorar von 100 %
+            des vereinbarten Behandlungspreises berechnet (abzüglich etwaig
+            ersparter Aufwendungen).
+          </p>
+          <p>
+            (3) Verspätungen verkürzen die Behandlungszeit entsprechend; der
+            volle Behandlungspreis ist zu entrichten.
+          </p>
+          <p>
+            (4) Bei 3 kurzfristigen Absagen in Folge behält sich das Studio das
+            Recht vor, künftige Termine abzulehnen.
+          </p>
+          <p>
+            (5) Dem Kunden bleibt ausdrücklich der Nachweis gestattet, dass dem
+            Studio kein oder ein wesentlich geringerer Schaden entstanden ist.
+          </p>
+
+          <h2>§ 6 Zahlung</h2>
+          <p>
+            Die Vergütung ist direkt im Anschluss an die Behandlung vor Ort in
+            bar oder per Karte fällig. Ausfallrechnungen sind innerhalb von 7
+            Tagen zu begleichen.
+          </p>
+
+          <h2>§ 7 Schlussbestimmungen</h2>
+          <p>
+            Es gilt deutsches Recht. Sollte eine Bestimmung unwirksam sein,
+            bleibt die Wirksamkeit der übrigen Bestimmungen hiervon
+            unberührt.
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+      <div class="container footer-inner">
+        <ul class="footer-links">
+          <li><a href="index.html#start">Start</a></li>
+          <li><a href="index.html#leistungen">Leistungen</a></li>
+          <li><a href="index.html#leistungen">Preise</a></li>
+          <li><a href="index.html#galerie">Galerie</a></li>
+          <li><a href="index.html#ueber-mich">Über mich</a></li>
+          <li><a href="index.html#kontakt">Kontakt</a></li>
+        </ul>
+        <div class="footer-claim label">
+          More than lashes<span>♥</span>More confidence<span>♥</span>A more you
+        </div>
+        <ul class="footer-links">
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+          <li><a href="agb.html">AGB</a></li>
+          <li class="social">
+            <a
+              href="https://instagram.com/all_about_eyes_by_carrie"
+              target="_blank"
+              rel="noopener"
+              aria-label="Instagram"
+              ><svg class="icon"><use href="#i-insta" /></svg
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <script>
+      const toggle = document.getElementById("menuToggle");
+      const links = document.getElementById("navLinks");
+      toggle.addEventListener("click", () => {
+        const open = links.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", open);
+      });
+    </script>
+  </body>
+</html>
