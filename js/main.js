@@ -65,11 +65,14 @@
       html += `<div class="lash-wrap"><div class="lash-cards" id="lashCards" tabindex="0" role="group" aria-label="Wimpern-Stile, seitlich wischbar">`;
       w.stile.forEach((st) => {
         const icon = LASH_ICONS[st.icon];
-        html += `<article class="lash-card">`;
+        html += `<article class="lash-card${st.highlight ? " is-highlight" : ""}">`;
+        if (st.highlight) {
+          html += `<span class="lash-badge">${esc(st.badgeText || "Beliebt")}</span>`;
+        }
         if (icon) {
           html += `<svg class="lash-icon" aria-hidden="true" focusable="false"><use href="#${icon}" /></svg>`;
         }
-        html += `<h4 class="lash-name">${esc(st.name).replace(/1:1/g, '<span class="num-lining">1:1</span>')}</h4>`;
+        html += `<h4 class="lash-name"><span>${esc(st.name).replace(/1:1/g, '<span class="num-lining">1:1</span>')}</span></h4>`;
         html += `<p class="lash-detail">${st.detail ? esc(st.detail) : "&nbsp;"}</p>`;
         html += `<p class="lash-label">${esc(w.spalten[0])}</p>`;
         html += `<p class="lash-price">${eur(st.preise[0])}</p>`;
@@ -83,8 +86,12 @@
       html += `</div><div class="lash-dots" aria-hidden="true">${w.stile
         .map(() => "<span></span>")
         .join("")}</div></div>`;
-      if (w.untertitel) html += `<p class="price-note">${esc(w.untertitel)}</p>`;
-      if (w.hinweis) html += `<p class="price-note">${esc(w.hinweis)}</p>`;
+      if (w.untertitel || w.hinweis) {
+        html += `<div class="info-box"><svg class="info-icon" aria-hidden="true" focusable="false"><use href="#i-info" /></svg><div>`;
+        if (w.untertitel) html += `<p class="info-title">${esc(w.untertitel)}</p>`;
+        if (w.hinweis) html += `<p>${esc(w.hinweis)}</p>`;
+        html += `</div></div>`;
+      }
       html += `</div>`;
     }
 

@@ -571,8 +571,8 @@ header {
 }
 /* ============ Leistungen ============ */
 .services {
-  padding: 30px 0 50px;
-  background: var(--bg-soft);
+  padding: 40px 0 60px;
+  background: #efdacf;
 }
 /* ============ Über mich & Warum ============ */
 .about-why {
@@ -1713,4 +1713,151 @@ footer::before {
 .num-lining {
   font-variant-numeric: lining-nums;
   font-feature-settings: "lnum" 1;
+}
+
+/* ============ Preisliste: mehr Präsenz ============ */
+.price-block,
+.menu-cols {
+  max-width: 1100px;
+  margin-inline: auto;
+}
+.price-block h3 {
+  font-size: 30px;
+}
+.lash-cards {
+  gap: 28px;
+}
+.lash-card {
+  position: relative;
+  overflow: hidden;
+  padding: 40px 32px;
+  border-radius: 16px;
+  box-shadow: 0 14px 36px rgba(120, 70, 55, 0.18);
+}
+.lash-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #8f5a47, #d4a088 50%, #8f5a47);
+}
+.lash-icon {
+  width: 96px;
+  height: 64px;
+  margin-bottom: 14px;
+}
+.lash-name {
+  font-size: 29px;
+}
+.lash-price,
+.tl-price,
+.pill-price,
+.menu-price {
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "lnum" 1, "tnum" 1;
+}
+.lash-price {
+  font-size: 52px;
+}
+.tl-price {
+  font-size: 20px;
+}
+.lash-card.is-highlight {
+  transform: scale(1.04);
+  border: 1.5px solid #c9a07f;
+  z-index: 1;
+}
+.lash-card.is-highlight:hover {
+  transform: scale(1.04) translateY(-3px);
+}
+.lash-badge {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 3px 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #8f5a47, #a06650 50%, #8f5a47);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.info-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  max-width: 760px;
+  margin: 30px auto 0;
+  padding: 18px 24px;
+  background: rgba(255, 250, 247, 0.75);
+  border: 1px solid #d9b9a3;
+  border-radius: 12px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.info-icon {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  margin-top: 1px;
+}
+.info-title {
+  font-weight: 600;
+}
+.pill-row {
+  gap: 14px;
+}
+.pill {
+  padding: 12px 26px;
+  font-size: 20px;
+}
+.menu-cols {
+  gap: 28px;
+}
+.menu-card {
+  padding: 28px 32px 20px;
+}
+.menu-line {
+  font-size: 20px;
+}
+@media (max-width: 767px) {
+  .lash-price {
+    font-size: 44px;
+  }
+  .lash-card {
+    padding: 34px 22px 30px;
+  }
+  .lash-cards {
+    gap: 14px;
+  }
+  .info-box {
+    margin-top: 6px;
+    padding: 16px 18px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lash-card.is-highlight:hover {
+    transform: scale(1.04);
+  }
+}
+
+/* Korrekturen: Pills in einer Reihe, Spaltenüberschriften ohne Umbruch */
+.pill {
+  padding: 12px 18px;
+  font-size: 19px;
+  gap: 14px;
+}
+.pill-row {
+  gap: 12px;
+}
+.about-text h2,
+.why h2 {
+  font-size: clamp(20px, 1.9vw, 28px);
+  letter-spacing: 0.1em;
 }
