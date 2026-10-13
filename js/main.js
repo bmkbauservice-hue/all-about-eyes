@@ -102,7 +102,7 @@
       ex.eintraege.forEach((e) => {
         html += `<li class="pill"><span class="pill-name">${esc(e.name)}${
           e.detail ? `<small>${esc(e.detail)}</small>` : ""
-        }</span><span class="pill-price">${e.zuschlag ? "+ " : ""}${eur(e.preis)}</span></li>`;
+        }</span><span class="pill-dots" aria-hidden="true"></span><span class="pill-price">${e.zuschlag ? "+ " : ""}${eur(e.preis)}</span></li>`;
       });
       html += `</ul></div>`;
     }
@@ -191,9 +191,34 @@
     });
   }
 
+  // --- Feste Buchungsleiste (Handy): nach dem Hero einblenden, am Kontaktbereich ausblenden ---
+  function initBookBar() {
+    const bar = document.getElementById("bookBar");
+    const hero = document.getElementById("start");
+    const kontakt = document.getElementById("kontakt");
+    if (!bar || !hero || !kontakt || !("IntersectionObserver" in window)) return;
+    let heroOut = false;
+    let kontaktSichtbar = false;
+    const update = () =>
+      bar.classList.toggle("is-visible", heroOut && !kontaktSichtbar);
+    new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        heroOut = !e.isIntersecting && e.boundingClientRect.top < 0;
+      });
+      update();
+    }).observe(hero);
+    new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        kontaktSichtbar = e.isIntersecting;
+      });
+      update();
+    }).observe(kontakt);
+  }
+
   initMenu();
   initAgbCheck();
   renderPreise();
   initReveal();
   initActiveNav();
+  initBookBar();
 })();

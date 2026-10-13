@@ -562,7 +562,10 @@ header {
   letter-spacing: 0.3em;
   color: var(--text-soft);
 }
-.tagline-band span {
+.tl-part {
+  white-space: nowrap;
+}
+.tagline-band .heart {
   margin: 0 14px;
   background: var(--gold-grad);
   -webkit-background-clip: text;
@@ -1082,7 +1085,7 @@ footer::before {
     letter-spacing: 0.14em;
     font-size: 12px;
   }
-  .tagline-band span {
+  .tagline-band .heart {
     margin: 0 6px;
   }
   .hero-role {
@@ -1880,4 +1883,220 @@ footer::before {
 }
 .menu-card {
   align-self: stretch;
+}
+
+/* ============ Mobile-first-Feinschliff (unter 768px) ============ */
+.book-bar {
+  display: none;
+}
+.contact-list a,
+.footer-links a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.btn {
+  min-height: 44px;
+}
+.agb-check {
+  min-height: 44px;
+  align-items: center;
+}
+.agb-check input {
+  width: 24px;
+  height: 24px;
+}
+.pill-dots {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  /* Hero: Buchungsbutton ohne Scrollen sichtbar */
+  .hero-img {
+    height: 38vh;
+  }
+  .hero-content {
+    padding: 0 16px 22px;
+    margin-top: -26px;
+  }
+  .hero-monogram {
+    font-size: 78px;
+  }
+  .hero-name {
+    font-size: 30px;
+  }
+  .hero-role {
+    margin: 8px 0 10px;
+  }
+  .hero-slogan {
+    font-size: 25px;
+    margin-bottom: 14px;
+  }
+  .hero-buttons {
+    gap: 10px;
+  }
+
+  /* Feste Buchungsleiste */
+  .book-bar {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(251, 245, 241, 0.95);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid #d9b9a3;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100%);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease,
+      visibility 0s linear 0.3s;
+  }
+  .book-bar.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease,
+      visibility 0s;
+  }
+  .book-bar .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  footer {
+    padding-bottom: calc(16px + 76px + env(safe-area-inset-bottom));
+  }
+
+  /* Spruchband und Überschriften */
+  .section-title h2 {
+    font-size: clamp(24px, 7vw, 28px);
+    letter-spacing: 0.12em;
+    text-wrap: balance;
+  }
+  .about-text h2,
+  .why h2 {
+    text-wrap: balance;
+  }
+
+  /* Extras als Liste im Stil der Menükarte */
+  .pill-row {
+    display: block;
+    padding: 8px 20px;
+    background: var(--card);
+    border: 1px solid #dcc0ab;
+    border-radius: 10px;
+  }
+  .pill {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 12px 0;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 19px;
+  }
+  .pill:last-child {
+    border-bottom: 0;
+  }
+  .pill:hover {
+    border-color: var(--line);
+  }
+  .pill-dots {
+    display: block;
+    flex: 1;
+    min-width: 14px;
+    border-bottom: 2px dotted #c9a07f;
+    transform: translateY(-4px);
+  }
+  .pill-name {
+    flex: 0 1 auto;
+  }
+
+  /* Kontaktzeilen: linksbündiger Block, Block zentriert */
+  .contact-list {
+    width: fit-content;
+    margin-inline: auto;
+    text-align: left;
+  }
+  .contact-list li {
+    display: grid;
+    grid-template-columns: 32px auto;
+    gap: 12px;
+    align-items: center;
+    justify-content: start;
+    margin: 2px 0;
+  }
+  .contact-list .dot,
+  .contact-list .dot.dot-brand {
+    width: 32px;
+    height: 32px;
+    margin: 0;
+  }
+  .contact-list .dot svg {
+    width: 16px;
+    height: 16px;
+  }
+  .contact-list .dot-brand .brand-icon {
+    width: 32px;
+    height: 32px;
+  }
+  .contact-list .hours {
+    align-items: center;
+  }
+
+  /* Fließtext linksbündig */
+  .services-text,
+  .about-text p {
+    text-align: left;
+  }
+  .footer-links a {
+    padding-inline: 4px;
+  }
+}
+@media (max-width: 479px) {
+  .tagline-band {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 14px 16px;
+  }
+  .tagline-band .heart {
+    margin: 0;
+    line-height: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .book-bar,
+  .book-bar.is-visible {
+    transition: none;
+    transform: none;
+  }
+}
+@media (max-width: 767px) {
+  .contact-list .hours,
+  .contact-list li {
+    justify-content: start;
+    text-align: left;
+  }
+  .contact-list .dot.dot-brand + a,
+  .contact-list .dot-brand + a {
+    margin-left: 0;
+  }
+}
+.logo {
+  min-height: 44px;
+}
+.footer-links a {
+  min-width: 44px;
+  justify-content: center;
 }
