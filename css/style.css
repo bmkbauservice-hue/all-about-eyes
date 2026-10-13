@@ -258,15 +258,19 @@ header {
 }
 .hero-words {
   position: absolute;
-  left: 28px;
-  bottom: 40px;
+  left: 24px;
+  bottom: 32px;
   z-index: 2;
   list-style: none;
   color: var(--text);
   line-height: 2.1;
   font-size: 11px;
   letter-spacing: 0.2em;
-  text-shadow: 0 0 10px rgba(255, 245, 238, 0.9);
+  padding: 10px 18px 14px;
+  border-radius: 10px;
+  background: rgba(253, 243, 234, 0.75);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
 }
 .hero-words::after {
   content: "";
@@ -419,11 +423,6 @@ header {
   position: relative;
   z-index: 2;
 }
-.about-text h2 {
-  font-weight: 500;
-  font-size: 30px;
-  line-height: 1;
-}
 .about-text .script {
   font-size: 54px;
   line-height: 1;
@@ -450,11 +449,6 @@ header {
   padding: 36px 30px;
   position: relative;
   border-left: 1px solid var(--line);
-}
-.why h2 {
-  font-weight: 500;
-  font-size: 30px;
-  margin-bottom: 18px;
 }
 .why-item {
   display: flex;
@@ -1169,5 +1163,44 @@ footer::before {
   }
   .hero-role {
     letter-spacing: 0.3em;
+  }
+}
+
+/* ============ Überschriften in Spalten (Über mich, Warum) ============ */
+.about-text,
+.why h2 {
+  text-align: center;
+}
+.about-text h2,
+.why h2 {
+  background: var(--gold-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 500;
+  font-size: clamp(20px, 2.2vw, 28px);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.about-text h2::before,
+.about-text h2::after,
+.why h2::before,
+.why h2::after {
+  content: "";
+  flex: 1 1 16px;
+  height: 1px;
+  background: var(--line);
+}
+@media (max-width: 640px) {
+  .about-text h2,
+  .why h2 {
+    letter-spacing: 0.12em;
+    gap: 10px;
   }
 }
