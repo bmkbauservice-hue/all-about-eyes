@@ -169,7 +169,7 @@
           }
         });
       },
-      { threshold: 0.05, rootMargin: "0px 0px -8% 0px" },
+      { threshold: 0.05, rootMargin: "10000px 0px -8% 0px" },
     );
     items.forEach((el) => obs.observe(el));
 
