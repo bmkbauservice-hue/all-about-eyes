@@ -15,6 +15,10 @@
     <!-- SVG-Icons einmal definieren, dann per <use> wiederverwenden -->
     <svg width="0" height="0" style="position: absolute">
       <defs>
+        <symbol id="i-clock" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 7v5l3 2" />
+        </symbol>
         <symbol id="i-cal" viewBox="0 0 24 24">
           <rect x="3" y="5" width="18" height="16" rx="2" />
           <path d="M3 10h18M8 3v4M16 3v4M8 14h2M14 14h2M8 17h2" />
@@ -256,6 +260,23 @@
         </div>
       </section>
 
+      <!-- ================= BEWERTUNGEN (Beautinda) ================= -->
+      <section class="rating">
+        <div class="container">
+          <div class="rating-card reveal">
+            <span class="rating-stars" aria-hidden="true">★★★★★</span>
+            <p><strong>5,0</strong> – über 50 Bewertungen auf Beautinda</p>
+            <a
+              href="https://beautinda.de/artist/xEGtsmfsVZZhyMDmw6BxHkJbhem1"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-outline btn-small"
+              >Bewertungen ansehen<svg class="icon"><use href="#i-arrow" /></svg
+            ></a>
+          </div>
+        </div>
+      </section>
+
       <!-- ================= GALERIE ================= -->
       <section class="gallery" id="galerie">
         <div class="container">
@@ -381,24 +402,36 @@
             Bereit für deinen<br />neuen Lieblingslook? ♡
           </div>
           <div class="cta-action">
-            <label class="agb-check">
-              <input type="checkbox" id="agbCheck" />
-              <span
-                >Ich habe die <a href="agb.html">AGB</a> gelesen und akzeptiere
-                sie.</span
-              >
-            </label>
             <a
-              href="https://wa.me/4915153319572"
+              href="https://beautinda.de/book/xEGtsmfsVZZhyMDmw6BxHkJbhem1/orders"
               target="_blank"
               rel="noopener"
               class="btn btn-primary"
-              id="terminBtn"
-              role="button"
-              aria-disabled="true"
-              tabindex="-1"
-              >Termin anfragen<svg class="icon"><use href="#i-arrow" /></svg
+              >Termin online buchen<svg class="icon"><use href="#i-arrow" /></svg
             ></a>
+            <p class="book-note">
+              Mit deiner Buchung gelten meine <a href="agb.html">AGB</a>.
+            </p>
+            <div class="wa-way">
+              <label class="agb-check">
+                <input type="checkbox" id="agbCheck" />
+                <span
+                  >Ich habe die <a href="agb.html">AGB</a> gelesen und
+                  akzeptiere sie.</span
+                >
+              </label>
+              <a
+                href="https://wa.me/4915153319572"
+                target="_blank"
+                rel="noopener"
+                class="btn btn-outline"
+                id="terminBtn"
+                role="button"
+                aria-disabled="true"
+                tabindex="-1"
+                >Per WhatsApp anfragen<svg class="icon"><use href="#i-chat" /></svg
+              ></a>
+            </div>
           </div>
           <ul class="contact-list">
             <li>
@@ -422,6 +455,11 @@
                 rel="noopener"
                 >all_about_eyes_by_carrie</a
               >
+            </li>
+            <li class="hours">
+              <span class="dot"
+                ><svg class="icon"><use href="#i-clock" /></svg></span
+              ><span>Mo 9:30–19:00 Uhr<br />Di–Do 9:00–18:30 Uhr</span>
             </li>
           </ul>
           <div class="cta-logo">
