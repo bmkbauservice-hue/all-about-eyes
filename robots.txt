@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# Sitemap folgt nach dem Domain-Umzug (https://all-about-eyes.de/)

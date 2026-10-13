@@ -5,12 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <title>All About Eyes by Carrie – Lash Artist</title>
-    <meta
-      name="description"
-      content="Luxuriöse Wimpernkunst für deinen perfekten Blick – Wimpernverlängerung, Lash Lifting und Brow Styling by Carrie."
-    />
+    <title>All About Eyes by Carrie – Wimpernverlängerung in Velten</title>
+    <meta name="description" content="Wimpernverlängerung, Augenbrauen und Waxing in Velten – UV-Methode, 1:1 bis Mega Volumen. Jetzt online Termin buchen bei All About Eyes by Carrie." />
+    <meta name="theme-color" content="#fbf5f1" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1f1715" media="(prefers-color-scheme: dark)" />
+    <!-- TODO: nach Domain-Umzug auf https://all-about-eyes.de/ umstellen (og:url, og:image, twitter:image, JSON-LD) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content="All About Eyes by Carrie" />
+    <meta property="og:title" content="All About Eyes by Carrie – Wimpernverlängerung in Velten" />
+    <meta property="og:description" content="Wimpernverlängerung, Augenbrauen und Waxing in Velten – UV-Methode, 1:1 bis Mega Volumen. Jetzt online Termin buchen bei All About Eyes by Carrie." />
+    <meta property="og:url" content="https://bmkbauservice-hue.github.io/all-about-eyes/index.html" />
+    <meta property="og:image" content="https://bmkbauservice-hue.github.io/all-about-eyes/img/vorschau.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Auge mit Wimpernverlängerung zwischen Blüten – All About Eyes by Carrie, Lash Artist in Velten" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="All About Eyes by Carrie – Wimpernverlängerung in Velten" />
+    <meta name="twitter:description" content="Wimpernverlängerung, Augenbrauen und Waxing in Velten – UV-Methode, 1:1 bis Mega Volumen. Jetzt online Termin buchen bei All About Eyes by Carrie." />
+    <meta name="twitter:image" content="https://bmkbauservice-hue.github.io/all-about-eyes/img/vorschau.jpg" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BeautySalon",
+  "name": "All About Eyes by Carrie",
+  "description": "Wimpernverlängerung, Augenbrauen und Waxing in Velten – UV-Methode, 1:1 bis Mega Volumen.",
+  "url": "https://bmkbauservice-hue.github.io/all-about-eyes/",
+  "image": "https://bmkbauservice-hue.github.io/all-about-eyes/img/vorschau.jpg",
+  "telephone": "+4915153319572",
+  "email": "carrie.carinthia@gmail.com",
+  "priceRange": "€€",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Karlstraße 36",
+    "postalCode": "16727",
+    "addressLocality": "Velten",
+    "addressCountry": "DE"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday"
+      ],
+      "opens": "09:30",
+      "closes": "19:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Tuesday",
+        "Wednesday",
+        "Thursday"
+      ],
+      "opens": "09:00",
+      "closes": "18:30"
+    }
+  ],
+  "sameAs": [
+    "https://instagram.com/all_about_eyes_by_carrie",
+    "https://beautinda.de/artist/xEGtsmfsVZZhyMDmw6BxHkJbhem1"
+  ]
+}
+    </script>
     <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+    <script src="js/theme.js"></script>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
@@ -68,6 +127,13 @@
         <symbol id="i-clock" viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="9" />
           <path d="M12 7v5l3 2" />
+        </symbol>
+        <symbol id="i-moon" viewBox="0 0 24 24">
+          <path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.2 8.2 0 1 0 10.2 10.2z" />
+        </symbol>
+        <symbol id="i-sun" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="4.2" />
+          <path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5.3 5.3l1.7 1.7M17 17l1.7 1.7M5.3 18.7L7 17M17 7l1.7-1.7" />
         </symbol>
         <symbol id="i-cal" viewBox="0 0 24 24">
           <rect x="3" y="5" width="18" height="16" rx="2" />
@@ -162,6 +228,15 @@
             ><svg class="icon"><use href="#i-cal" /></svg>Termin anfragen</a
           >
           <span class="social">
+            <button
+              type="button"
+              class="theme-toggle"
+              id="themeToggle"
+              aria-label="Dunklen Modus einschalten"
+            >
+              <svg class="icon theme-moon" aria-hidden="true" focusable="false"><use href="#i-moon" /></svg>
+              <svg class="icon theme-sun" aria-hidden="true" focusable="false"><use href="#i-sun" /></svg>
+            </button>
             <a
               href="https://instagram.com/all_about_eyes_by_carrie"
               target="_blank"
