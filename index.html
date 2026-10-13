@@ -120,11 +120,7 @@
               aria-label="Instagram"
               ><svg class="icon"><use href="#i-insta" /></svg
             ></a>
-            <a
-              href="https://wa.me/4915153319572"
-              target="_blank"
-              rel="noopener"
-              aria-label="WhatsApp"
+            <a href="#kontakt" aria-label="Termin anfragen"
               ><svg class="icon"><use href="#i-chat" /></svg
             ></a>
           </span>
@@ -410,13 +406,26 @@
           <div class="cta-title">
             Bereit für deinen<br />neuen Lieblingslook? ♡
           </div>
-          <a
-            href="https://wa.me/4915153319572"
-            target="_blank"
-            rel="noopener"
-            class="btn btn-primary"
-            >Termin anfragen<svg class="icon"><use href="#i-arrow" /></svg
-          ></a>
+          <div class="cta-action">
+            <label class="agb-check">
+              <input type="checkbox" id="agbCheck" />
+              <span
+                >Ich habe die <a href="agb.html">AGB</a> gelesen und akzeptiere
+                sie.</span
+              >
+            </label>
+            <a
+              href="https://wa.me/4915153319572"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-primary"
+              id="terminBtn"
+              role="button"
+              aria-disabled="true"
+              tabindex="-1"
+              >Termin anfragen<svg class="icon"><use href="#i-arrow" /></svg
+            ></a>
+          </div>
           <ul class="contact-list">
             <li>
               <span class="dot"
@@ -531,6 +540,20 @@
       go(0);
       */
 
+      // --- Terminanfrage erst nach AGB-Bestätigung ---
+      const agbCheck = document.getElementById("agbCheck");
+      const terminBtn = document.getElementById("terminBtn");
+      const syncTermin = () => {
+        const ok = agbCheck.checked;
+        terminBtn.setAttribute("aria-disabled", String(!ok));
+        terminBtn.tabIndex = ok ? 0 : -1;
+      };
+      agbCheck.addEventListener("change", syncTermin);
+      terminBtn.addEventListener("click", (e) => {
+        if (!agbCheck.checked) e.preventDefault();
+      });
+      syncTermin();
+
       // --- Preise aus js/preise.js aufbauen ---
       (function renderPreise() {
         const box = document.getElementById("preise");
@@ -560,17 +583,24 @@
           html += `</div>`;
         }
 
-        Object.keys(PREISE).forEach((key) => {
-          const g = PREISE[key];
-          if (key === "wimpern" || !g.sichtbar) return;
-          html += `<div class="price-block reveal"><h3>${esc(g.titel)}</h3><ul class="price-list">`;
+        const liste = (g) => {
+          let h = `<div class="price-block"><h3>${esc(g.titel)}</h3><ul class="price-list">`;
           g.eintraege.forEach((e) => {
-            html += `<li><span>${esc(e.name)}${
+            h += `<li><span>${esc(e.name)}${
               e.detail ? `<small>${esc(e.detail)}</small>` : ""
             }</span><span class="amount">${e.zuschlag ? "+\u00a0" : ""}${eur(e.preis)}</span></li>`;
           });
-          html += `</ul></div>`;
-        });
+          return h + `</ul></div>`;
+        };
+        if (PREISE.extras && PREISE.extras.sichtbar) {
+          html += `<div class="reveal">${liste(PREISE.extras)}</div>`;
+        }
+        const paare = Object.keys(PREISE)
+          .filter((k) => k !== "wimpern" && k !== "extras" && PREISE[k].sichtbar)
+          .map((k) => liste(PREISE[k]));
+        if (paare.length) {
+          html += `<div class="price-lists reveal">${paare.join("")}</div>`;
+        }
         box.innerHTML = html;
       })();
 

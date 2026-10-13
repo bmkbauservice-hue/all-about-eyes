@@ -26,7 +26,7 @@ const PREISE = {
   },
 
   augenbrauen: {
-    sichtbar: false,
+    sichtbar: true,
     titel: "Augenbrauen",
     eintraege: [
       { name: "Browlifting inkl. Styling", preis: 40 },
@@ -36,8 +36,8 @@ const PREISE = {
   },
 
   waxing: {
-    sichtbar: false,
-    titel: "Waxing",
+    sichtbar: true,
+    titel: "Gesichts-Waxing",
     eintraege: [
       { name: "Oberlippe", preis: 11 },
       { name: "Kinn", preis: 11 },
