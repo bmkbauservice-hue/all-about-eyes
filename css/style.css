@@ -476,12 +476,6 @@ header {
   align-items: center;
   gap: 14px;
 }
-.logo-mark {
-  font-family: var(--script);
-  font-size: 42px;
-  color: var(--rose-dark);
-  line-height: 1;
-}
 .logo-text strong {
   display: block;
   font-weight: 500;
@@ -664,16 +658,6 @@ header {
   text-align: center;
   padding: 40px 32px 40px 0;
 }
-.hero-monogram {
-  font-family: var(--script);
-  font-size: clamp(100px, 11vw, 170px);
-  line-height: 1.1;
-  padding: 0.12em 0.2em 0.08em;
-  background: var(--gold-grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
 .hero-name {
   font-weight: 500;
   font-size: clamp(34px, 4.4vw, 62px);
@@ -792,16 +776,6 @@ header {
 }
 .about-card::after {
   bottom: 11%;
-}
-.about-monogram {
-  font-family: var(--script);
-  font-size: clamp(110px, 12vw, 190px);
-  line-height: 1.1;
-  padding: 0.1em 0.2em;
-  background: var(--gold-grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
 }
 .why {
   background: var(--card);
@@ -939,9 +913,6 @@ header {
 .cta-logo {
   text-align: center;
 }
-.cta-logo .logo-mark {
-  font-size: 60px;
-}
 /* ============ Footer ============ */
 footer {
   background: var(--bg-soft);
@@ -1050,9 +1021,6 @@ footer {
     min-height: 0;
     order: -1;
     padding: 16px 16px 0;
-  }
-  .about-monogram {
-    font-size: 110px;
   }
   .why-list {
     gap: 22px 12px;
@@ -2076,9 +2044,6 @@ footer::before {
     padding: 0 16px 22px;
     margin-top: -26px;
   }
-  .hero-monogram {
-    font-size: 78px;
-  }
   .hero-name {
     font-size: 30px;
   }
@@ -2294,16 +2259,6 @@ footer::before {
   padding: 70px 0 90px;
   text-align: center;
 }
-.notfound-mark {
-  font-family: var(--script);
-  font-size: clamp(100px, 22vw, 150px);
-  line-height: 1.1;
-  padding: 0.1em 0.2em;
-  background: var(--gold-grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
 .notfound-title {
   font-variant-numeric: lining-nums;
   font-weight: 500;
@@ -2314,4 +2269,46 @@ footer::before {
 .notfound-text {
   font-size: 24px;
   margin: 10px 0 28px;
+}
+
+/* ============ AC-Logo (Visitenkarte) als Maske mit Roségold-Verlauf ============ */
+.logo-ac {
+  display: block;
+  flex: none;
+  width: var(--logo-w, 120px);
+  aspect-ratio: 698 / 302;
+  background: var(--gold-grad);
+  -webkit-mask: url(../img/ac-logo.png) center / contain no-repeat;
+  mask: url(../img/ac-logo.png) center / contain no-repeat;
+}
+.logo .logo-ac {
+  --logo-w: 64px;
+}
+.logo-text strong {
+  white-space: nowrap;
+}
+.hero-mono .logo-ac {
+  --logo-w: clamp(210px, 24vw, 300px);
+  margin-inline: auto;
+}
+.about-card .logo-ac {
+  --logo-w: min(270px, 74%);
+}
+.cta-logo .logo-ac {
+  --logo-w: 140px;
+  margin: 0 auto 6px;
+}
+.notfound-mark .logo-ac {
+  --logo-w: clamp(210px, 60vw, 300px);
+  margin: 0 auto 6px;
+}
+@media (max-width: 767px) {
+  .hero-mono .logo-ac {
+    --logo-w: 176px;
+  }
+}
+@media (max-width: 479px), (min-width: 901px) and (max-width: 1080px) {
+  .logo .logo-ac {
+    --logo-w: 84px;
+  }
 }
